@@ -13,32 +13,33 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free NextJS Shadcn template.",
+    question: "What technologies do you specialize in?",
+    answer:
+      "I specialize in front-end development with expertise in React.js, Next.js, and Inertia.js. I have experience working with JavaScript and TypeScript and have developed projects using Laravel (for backend), MongoDB, and Express.js. Additionally, I focus on responsive UI/UX and multilingual support for web applications.",
     value: "item-1",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit in voluptate velit?",
+    question: "Do you have experience with state management?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam consectetur sapiente, iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+      "While I have experience with various state management techniques, I generally  avoid using Redux  for medium-sized projects, as it can introduce unnecessary complexity. However, for Enterprise-grade applications  requiring  scalability and robust state management , I consider it when necessary. Instead, I prefer  React Context API, Zustand, or local state management , as they offer  better performance, simpler implementation, and improved maintainability  based on project requirements.",
     value: "item-2",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet Consectetur natus dolor minus quibusdam?",
+    question: "Can you integrate third-party APIs and payment gateways?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis.",
+      "Absolutely! I have successfully integrated Stripe for payment processing in a MERN (NEXT.JS) project. I am also experienced in working with REST APIs, GraphQL, and various third-party services to enhance web applications.",
     value: "item-3",
   },
   {
-    question: "Excepteur sint occaecat cupidata non proident sunt?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    question: "Do you work on full-stack development?",
+    answer:
+      "Yes, I have experience with full-stack development. While my primary focus is on front-end engineering, I have worked with Laravel (PHP) and the MERN stack (MongoDB, Express.js, React, Node.js) to build complete web applications. This allows me to integrate front-end and back-end seamlessly, ensuring a smooth user experience.",
     value: "item-4",
   },
   {
-    question:
-      "Enim ad minim veniam, quis nostrud exercitation ullamco laboris?",
-    answer: "consectetur adipisicing elit. Sint labore.",
+    question: "Do you have experience with eCommerce development?",
+    answer:
+      "Yes! I have worked on eCommerce web applications, incorporating features like Stripe payment integration, multilingual support, and a fully responsive UI. My experience includes optimizing checkout flows, managing product catalogs, and ensuring high-performance front-end implementations.",
     value: "item-5",
   },
 ];

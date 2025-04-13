@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "github.com",
       },
+      {
+        protocol: "https",
+        hostname: "portfolio-v1-rho-orcin.vercel.app",
+      },
     ],
   },
 };

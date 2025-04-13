@@ -12,39 +12,39 @@ interface sponsorsProps {
 const sponsors: sponsorsProps[] = [
   {
     icon: "Crown",
-    name: "Acmebrand",
+    name: "Pacific-rim Fusion",
   },
   {
     icon: "Vegan",
-    name: "Acmelogo",
+    name: "Vegan Collective",
   },
   {
     icon: "Ghost",
-    name: "Acmesponsor",
+    name: "Psykick.club",
   },
   {
     icon: "Puzzle",
-    name: "Acmeipsum",
+    name: "AMES Investments",
   },
-  {
-    icon: "Squirrel",
-    name: "Acme",
-  },
-  {
-    icon: "Cookie",
-    name: "Accmee",
-  },
-  {
-    icon: "Drama",
-    name: "Acmetech",
-  },
+  // {
+  //   icon: "Squirrel",
+  //   name: "Acme",
+  // },
+  // {
+  //   icon: "Cookie",
+  //   name: "Accmee",
+  // },
+  // {
+  //   icon: "Drama",
+  //   name: "Acmetech",
+  // },
 ];
 
-export const SponsorsSection = () => {
+export const ClientsSection = () => {
   return (
     <section id="sponsors" className="max-w-[75%] mx-auto pb-24 sm:pb-32">
-      <h2 className="text-lg md:text-xl text-center mb-6">
-        Our Platinum Sponsors
+      <h2 className="text-lg md:text-xl text-center mb-6 text-primary">
+        Most Recent Clients
       </h2>
 
       <div className="mx-auto">

@@ -1,11 +1,6 @@
 "use client";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-import { Building2, Clock, Mail, Phone } from "lucide-react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Mail } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,6 +22,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import LinkedInIcon from "@/components/icons/linkedin-icon";
+import Link from "next/link";
+// import { BorderBeam } from "@/components/magicui/border-beam";
 
 const formSchema = z.object({
   firstName: z.string().min(2).max(255),
@@ -52,7 +50,7 @@ export const ContactSection = () => {
     const { firstName, lastName, email, subject, message } = values;
     console.log(values);
 
-    const mailToLink = `mailto:leomirandadev@gmail.com?subject=${subject}&body=Hello I am ${firstName} ${lastName}, my Email is ${email}. %0D%0A${message}`;
+    const mailToLink = `mailto:dev.khalidhossain@gmail.com?subject=${subject}&body=Hello I am ${firstName} ${lastName}, my Email is ${email}. %0D%0A${message}`;
 
     window.location.href = mailToLink;
   }
@@ -66,31 +64,31 @@ export const ContactSection = () => {
               Contact
             </h2>
 
-            <h2 className="text-3xl md:text-4xl font-bold">Connect With Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Connect With Me</h2>
           </div>
           <p className="mb-8 text-muted-foreground lg:w-5/6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-            ipsam sint enim exercitationem ex autem corrupti quas tenetur
+            Frontend engineer and future solopreneur from Dhaka, Bangladesh,
+            passionate about creating innovative digital experiences.
           </p>
 
           <div className="flex flex-col gap-4">
-            <div>
+            {/* <div>
               <div className="flex gap-2 mb-1">
                 <Building2 />
                 <div className="font-bold">Find us</div>
               </div>
 
               <div>742 Evergreen Terrace, Springfield, IL 62704</div>
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
               <div className="flex gap-2 mb-1">
                 <Phone />
-                <div className="font-bold">Call us</div>
+                <div className="font-bold">Call Me </div>
               </div>
 
-              <div>+1 (619) 123-4567</div>
-            </div>
+              <div>+880 1706107019</div>
+            </div> */}
 
             <div>
               <div className="flex gap-2 mb-1">
@@ -98,10 +96,24 @@ export const ContactSection = () => {
                 <div className="font-bold">Mail US</div>
               </div>
 
-              <div>leomirandadev@gmail.com</div>
+              <div>dev.khalidhossain@gmail.com</div>
+            </div>
+            <div>
+              <div className="flex gap-2 mb-1">
+                <LinkedInIcon />
+                <div className="font-bold">LinkedIn</div>
+              </div>
+
+              <div>
+                <Link href={"https://www.linkedin.com/in/khalidhossainbadhon/"}>
+                  <span className="hover:underline">
+                    Khalid Hossain Badhon
+                  </span>
+                </Link>
+              </div>
             </div>
 
-            <div>
+            {/* <div>
               <div className="flex gap-2">
                 <Clock />
                 <div className="font-bold">Visit us</div>
@@ -111,7 +123,7 @@ export const ContactSection = () => {
                 <div>Monday - Friday</div>
                 <div>8AM - 4PM</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -131,7 +143,7 @@ export const ContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Leopoldo" {...field} />
+                          <Input placeholder="Khalid" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -144,7 +156,7 @@ export const ContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>Last Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Miranda" {...field} />
+                          <Input placeholder="Hossain" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -162,7 +174,7 @@ export const ContactSection = () => {
                         <FormControl>
                           <Input
                             type="email"
-                            placeholder="leomirandadev@gmail.com"
+                            placeholder="dev.khalidhossain@gmail.com"
                             {...field}
                           />
                         </FormControl>
@@ -236,8 +248,6 @@ export const ContactSection = () => {
               </form>
             </Form>
           </CardContent>
-
-          <CardFooter></CardFooter>
         </Card>
       </section>
     </section>

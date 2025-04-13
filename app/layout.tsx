@@ -4,11 +4,13 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { ScrollProgress } from "@/components/magicui/scroll-progress";
+import { SideDock } from "@/components/layout/sections/SideDock";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Shadcn - Landing template",
-  description: "Landing template from Shadcn",
+  title: "Portfolio - Khalid Hossain Badhon",
+  description: "Portfolio - Khalid Hossain Badhon",
 };
 
 export default function RootLayout({
@@ -25,6 +27,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SideDock />
+
+          <ScrollProgress className="top-[0]" />
           <Navbar />
 
           {children}

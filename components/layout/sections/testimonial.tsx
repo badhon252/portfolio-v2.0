@@ -15,6 +15,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
+import Image from "next/image";
 
 interface ReviewProps {
   image: string;
@@ -116,9 +117,16 @@ export const TestimonialSection = () => {
                 <CardHeader>
                   <div className="flex flex-row items-center gap-4">
                     <Avatar>
-                      <AvatarImage
+                      {/* <AvatarImage
                         src="https://avatars.githubusercontent.com/u/75042455?v=4"
                         alt="radix"
+                      /> */}
+                      <Image
+                        src="https://portfolio-v1-rho-orcin.vercel.app/_next/image?url=%2Fimages%2Favatar.jpg&w=256&q=75"
+                        alt="RadixLogo"
+                        width={40}
+                        height={40}
+                        className="rounded-full"
                       />
                       <AvatarFallback>SV</AvatarFallback>
                     </Avatar>
