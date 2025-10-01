@@ -7,7 +7,7 @@ export default function TimelineSection() {
   return (
     <div className="relative">
       {/* Vertical line */}
-      <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border transform md:translate-x-px"></div>
+      <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border transform md:-translate-x-1/2"></div>
 
       {/* Timeline items */}
       <div className="space-y-12">
@@ -18,19 +18,19 @@ export default function TimelineSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true, margin: "-100px" }}
-            className={`relative flex flex-col md:flex-row ${
-              index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-            }`}
+            className="relative flex flex-col md:flex-row"
           >
             {/* Timeline dot */}
-            <div className="absolute left-0 md:left-1/2 w-6 h-6 rounded-full bg-primary transform -translate-x-1/2 md:-translate-x-3 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full bg-background teleport-orb"></div>
+            <div className="absolute left-0 md:left-1/2 w-6 h-6 rounded-full bg-primary transform -translate-x-1/2 flex items-center justify-center z-10">
+              <div className="w-3 h-3 rounded-full bg-background"></div>
             </div>
 
             {/* Content */}
             <div
               className={`md:w-1/2 ${
-                index % 2 === 0 ? "md:pr-12" : "md:pl-12"
+                index % 2 === 0
+                  ? "md:pr-12 md:text-right"
+                  : "md:pl-12 md:text-left md:ml-auto"
               }`}
             >
               <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
