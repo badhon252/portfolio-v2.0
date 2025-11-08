@@ -23,7 +23,7 @@ export const HeroSection = () => {
     <section className="container w-full">
       <div className="grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-20 md:py-32">
         <div className="text-center space-y-8">
-          {/* <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
+          {/* <BackgroundLines className="flex items-center justify-center w-full flex-col px-4"> */}
             <Badge variant="outline" className="text-sm py-2">
               <span className="mr-2 bg-primary !text-black rounded-xl">
                 <Badge>Role</Badge>
@@ -39,8 +39,8 @@ export const HeroSection = () => {
                 </span>
               </h1>
             </div>
-          </BackgroundLines> */}
-          <BackgroundLinesDemo />
+          {/* </BackgroundLines> */}
+          {/* <BackgroundLinesDemo /> */}
 
           <p className="max-w-screen-sm mx-auto text-xl text-muted-foreground">
             {`A Front-End Engineer crafting high-performance, scalable web applications with React, Next.js, and TypeScript. I'm passionate about building products that make a difference.`}
