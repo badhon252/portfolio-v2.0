@@ -11,7 +11,7 @@ import { ClientsSection } from "@/components/layout/sections/clients";
 import { ContactSection } from "@/components/layout/sections/contact";
 import { FooterSection } from "@/components/layout/sections/footer";
 import ProjectContainer from "@/components/project/ProjectContainer";
-import { TechStacks } from "@/components/layout/sections/tect-stack";
+import TechStacks from "@/components/layout/sections/tect-stack";
 import AboutPage from "@/components/layout/sections/about/About";
 
 export const metadata = {

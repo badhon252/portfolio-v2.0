@@ -1,5 +1,5 @@
 "use client";
-import { Github, Menu } from "lucide-react";
+import { Github, Menu, LinkedinIcon } from "lucide-react";
 import React from "react";
 import {
   Sheet,
@@ -20,7 +20,7 @@ import {
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { ToggleTheme } from "./toogle-theme";
+// import { ToggleTheme } from "./toogle-theme";
 
 interface RouteProps {
   href: string;
@@ -115,11 +115,11 @@ export const Navbar = () => {
               </div>
             </div>
 
-            <SheetFooter className="flex-col sm:flex-col justify-start items-start">
+            {/* <SheetFooter className="flex-col sm:flex-col justify-start items-start">
               <Separator className="mb-2" />
 
               <ToggleTheme />
-            </SheetFooter>
+            </SheetFooter> */}
           </SheetContent>
         </Sheet>
       </div>
@@ -140,8 +140,16 @@ export const Navbar = () => {
       </NavigationMenu>
 
       <div className="hidden lg:flex">
-        <ToggleTheme />
-
+        {/* <ToggleTheme /> */}
+        <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
+          <Link
+            aria-label="View on LinkedIn"
+            href="https://www.linkedin.com/in/khalidhossainbadhon/"
+            target="_blank"
+          >
+            <LinkedinIcon className="size-5" />
+          </Link>
+        </Button>{" "}
         <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
           <Link
             aria-label="View on GitHub"
