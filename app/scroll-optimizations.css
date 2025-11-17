@@ -1,0 +1,68 @@
+/* Advanced scroll performance optimizations */
+
+/* Enable GPU acceleration for scroll */
+html {
+  scroll-timeline: auto;
+}
+
+/* Reduce jank during scroll by optimizing paint regions */
+body {
+  /* Prevents layout shift during scroll */
+  scrollbar-gutter: stable;
+  
+  /* Enable hardware acceleration for smooth scrolling */
+  -webkit-overflow-scrolling: touch;
+  
+  /* Optimize transform rendering */
+  will-change: scroll-position;
+}
+
+/* Optimize elements that animate during scroll */
+[data-scroll-animate] {
+  will-change: transform, opacity;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Optimize motion elements */
+[class*="motion"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000px;
+}
+
+/* Optimize Framer Motion animations */
+.framer-motion {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Optimize images for better scroll performance */
+img {
+  content-visibility: auto;
+  contain: layout style paint;
+}
+
+/* Optimize canvas elements */
+canvas {
+  will-change: contents;
+  backface-visibility: hidden;
+}
+
+/* Reduce motion for better scroll performance on scroll events */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize scroll snapshots - reduces computation during scroll */
+body {
+  /* Helps browser optimize scroll calculations */
+  contain: layout style paint;
+}

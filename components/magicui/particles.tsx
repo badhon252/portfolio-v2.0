@@ -78,7 +78,7 @@ type Circle = {
 
 export const Particles: React.FC<ParticlesProps> = ({
   className = "",
-  quantity = 100,
+  quantity = 30,
   staticity = 50,
   ease = 50,
   size = 0.4,
@@ -98,6 +98,7 @@ export const Particles: React.FC<ParticlesProps> = ({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
   const rafID = useRef<number | null>(null);
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -115,7 +116,13 @@ export const Particles: React.FC<ParticlesProps> = ({
       }, 200);
     };
 
+    // Handle visibility changes
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden);
+    };
+
     window.addEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       if (rafID.current != null) {
@@ -125,6 +132,7 @@ export const Particles: React.FC<ParticlesProps> = ({
         clearTimeout(resizeTimeout.current);
       }
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [color]);
 
@@ -297,7 +305,10 @@ export const Particles: React.FC<ParticlesProps> = ({
         drawCircle(newCircle);
       }
     });
-    rafID.current = window.requestAnimationFrame(animate);
+    // Only request next frame if visible
+    if (isVisible) {
+      rafID.current = window.requestAnimationFrame(animate);
+    }
   };
 
   return (

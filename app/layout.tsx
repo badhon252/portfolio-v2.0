@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { SideDock } from "@/components/layout/sections/SideDock";
+import LenisProvider from "@/lib/provider/LenisProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,19 +22,21 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background", inter.className)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SideDock />
+            <LenisProvider>      
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            >
+            <SideDock />
 
-          <ScrollProgress className="top-[0]" />
-          <Navbar />
+            <ScrollProgress className="top-[0]" />
+            <Navbar />
 
-          {children}
-        </ThemeProvider>
+              {children}
+          </ThemeProvider>
+            </LenisProvider>  
       </body>
     </html>
   );

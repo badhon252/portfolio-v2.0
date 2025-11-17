@@ -14,6 +14,8 @@ const locations = [
 export default function JourneyMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -113,7 +115,10 @@ export default function JourneyMap() {
     };
 
     const animate = () => {
-      drawMap();
+      // Only animate if the element is in view
+      if (isInView) {
+        drawMap();
+      }
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -125,10 +130,19 @@ export default function JourneyMap() {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [points.length]);
+  }, [points.length, isInView]);
 
   return (
-    <div className="relative w-full h-[450px] rounded-xl border border-slate-700 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-lg overflow-hidden">
+    <div 
+      ref={(el) => {
+        if (el && !observerRef.current) {
+          observerRef.current = new IntersectionObserver(([entry]) => {
+            setIsInView(entry.isIntersecting);
+          }, { threshold: 0.1 });
+          observerRef.current.observe(el);
+        }
+      }}
+      className="relative w-full h-[450px] rounded-xl border border-slate-700 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-lg overflow-hidden">
       <canvas ref={canvasRef} className="w-full h-full" />
 
       {/* Overlay labels */}
@@ -149,3 +163,4 @@ export default function JourneyMap() {
     </div>
   );
 }
+

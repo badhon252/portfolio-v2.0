@@ -97,8 +97,12 @@ export default function DarkVeil({
     const canvas = ref.current as HTMLCanvasElement;
     const parent = canvas.parentElement as HTMLElement;
 
+    // Reduce DPR on mobile/low-end devices for better performance
+    const isMobile = typeof navigator !== "undefined" && /(Mobi|Android|iPhone)/.test(navigator.userAgent);
+    const dpr = Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2);
+
     const renderer = new Renderer({
-      dpr: Math.min(window.devicePixelRatio, 2),
+      dpr,
       canvas,
     });
 
@@ -133,24 +137,34 @@ export default function DarkVeil({
 
     const start = performance.now();
     let frame = 0;
+    let isVisible = !document.hidden;
 
     const loop = () => {
-      program.uniforms.uTime.value =
-        ((performance.now() - start) / 1000) * speed;
-      program.uniforms.uHueShift.value = hueShift;
-      program.uniforms.uNoise.value = noiseIntensity;
-      program.uniforms.uScan.value = scanlineIntensity;
-      program.uniforms.uScanFreq.value = scanlineFrequency;
-      program.uniforms.uWarp.value = warpAmount;
-      renderer.render({ scene: mesh });
+      // Only render if the tab is visible
+      if (isVisible) {
+        program.uniforms.uTime.value =
+          ((performance.now() - start) / 1000) * speed;
+        program.uniforms.uHueShift.value = hueShift;
+        program.uniforms.uNoise.value = noiseIntensity;
+        program.uniforms.uScan.value = scanlineIntensity;
+        program.uniforms.uScanFreq.value = scanlineFrequency;
+        program.uniforms.uWarp.value = warpAmount;
+        renderer.render({ scene: mesh });
+      }
       frame = requestAnimationFrame(loop);
     };
 
+    const handleVisibilityChange = () => {
+      isVisible = !document.hidden;
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     loop();
 
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [
     hueShift,
