@@ -22,21 +22,21 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background", inter.className)}>
-            <LenisProvider>      
+        <LenisProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-            >
+          >
             <SideDock />
 
             <ScrollProgress className="top-[0]" />
             <Navbar />
 
-              {children}
+            {children}
           </ThemeProvider>
-            </LenisProvider>  
+        </LenisProvider>
       </body>
     </html>
   );

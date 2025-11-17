@@ -12,7 +12,7 @@ import ThreeDMarqueeDemo from "./hero-marquee-demo";
 // import { BackgroundLines } from "@/components/ui/background-lines";
 // import BackgroundLinesDemo from "./background-lines";
 import DarkVeilEffect from "./hero/dark-veil-effect";
-import { ImageSlideshow } from "@/components/ui/ImageSlideshow";
+// import { ImageSlideshow } from "@/components/ui/ImageSlideshow";
 const archivoBlack = Archivo_Black({ weight: "400", subsets: ["latin"] });
 
 export const HeroSection = () => {

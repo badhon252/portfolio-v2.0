@@ -1,5 +1,5 @@
 "use client";
-import { ChevronsDown, Github, Menu } from "lucide-react";
+import { Github, Menu } from "lucide-react";
 import React from "react";
 import {
   Sheet,
@@ -12,12 +12,11 @@ import {
 import { Separator } from "../ui/separator";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "../ui/navigation-menu";
+
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -55,7 +54,7 @@ const routeList: RouteProps[] = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <header className="shadow-inner bg-opacity-15 w-[90%] fixed md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 left-1/2 -translate-x-1/2 border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card ">
+    <header className="shadow-inner w-[90%] fixed md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 left-1/2 -translate-x-1/2 z-40 rounded-2xl flex justify-between items-center p-2 backdrop-blur-md bg-card/30 ">
       <Link href="/" className="font-bold text-lg flex items-center ">
         <Image
           src="https://portfolio-v1-rho-orcin.vercel.app/_next/image?url=%2Fimages%2Favatar.jpg&w=256&q=75"
