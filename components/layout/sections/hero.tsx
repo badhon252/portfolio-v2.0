@@ -11,6 +11,7 @@ import { ThreeDMarquee } from "@/components/ui/3d-marquee";
 import ThreeDMarqueeDemo from "./hero-marquee-demo";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import BackgroundLinesDemo from "./background-lines";
+import DarkVeilEffect from "./hero/dark-veil-effect";
 const archivoBlack = Archivo_Black({ weight: "400", subsets: ["latin"] });
 
 export const HeroSection = () => {
@@ -20,25 +21,28 @@ export const HeroSection = () => {
     "/pacific-rim-dashboard.png",
   ];
   return (
-    <section className="container w-full">
-      <div className="grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-20 md:py-32">
+    <section className=" relative">
+      <div className="absolute inset-0 h-full">
+        <DarkVeilEffect />
+      </div>
+      <div className="relative grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-20 md:py-32">
         <div className="text-center space-y-8">
           {/* <BackgroundLines className="flex items-center justify-center w-full flex-col px-4"> */}
-            <Badge variant="outline" className="text-sm py-2">
-              <span className="mr-2 bg-primary !text-black rounded-xl">
-                <Badge>Role</Badge>
-              </span>
-              <span> Frontend Developer </span>
-            </Badge>
+          <Badge variant="outline" className="text-sm py-2">
+            <span className="mr-2 bg-primary !text-black rounded-xl">
+              <Badge>Role</Badge>
+            </span>
+            <span> Frontend Developer </span>
+          </Badge>
 
-            <div className="max-w-screen-md mx-auto text-center text-4xl md:text-6xl font-black">
-              <h1 className={archivoBlack.className}>
-                Crafting Code, <br />
-                <span className="text-transparent px-2 bg-gradient-to-r from-[blue] to-primary bg-clip-text">
-                  Creating Impact
-                </span>
-              </h1>
-            </div>
+          <div className="max-w-screen-md mx-auto text-center text-4xl md:text-6xl font-black">
+            <h1 className={archivoBlack.className}>
+              Crafting Code, <br />
+              <span className="text-transparent px-2 bg-gradient-to-r from-[blue] to-primary bg-clip-text">
+                Creating Impact
+              </span>
+            </h1>
+          </div>
           {/* </BackgroundLines> */}
           {/* <BackgroundLinesDemo /> */}
 
