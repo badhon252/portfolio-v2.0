@@ -5,7 +5,7 @@ const OrbitingTechStack = dynamic(() => import("./orbiting-stack"));
 export default function TechStacks() {
   return (
     <div className="max-w-4xl mx-auto ">
-      <section className="flex items-center justify-center bg-background px-4 py-16 my-20">
+      <section className="md:flex items-center justify-center bg-background px-4 py-16 my-20">
         <div className="description">
           <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-black leading-none text-transparent dark:from-white dark:to-slate-900/10">
             Stack
@@ -20,4 +20,3 @@ export default function TechStacks() {
     </div>
   );
 }
-

@@ -7,6 +7,6 @@ export interface Project {
   technologies: string[];
   features: string[];
   categories: string[];
-  githubUrl: string;
+  githubUrl?: string;
   demoUrl: string;
 }

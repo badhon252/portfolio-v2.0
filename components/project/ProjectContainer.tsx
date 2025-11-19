@@ -6,11 +6,22 @@ import { projectsData } from "@/data/projects";
 import ProjectCard from "@/components/project/project-card";
 import ProjectFilter from "@/components/project/project-filter";
 import PageTransition from "@/components/layout/page-transition";
+import Link from "next/link";
+import { ArrowRightIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-export type ProjectCategory = "all" | "nextjs" | "react" | "saas" | "ai" | "ui" | "booking";
+export type ProjectCategory =
+  | "all"
+  | "saas"
+  | "ai"
+  | "booking"
+  | "service"
+  | "ecommerce"
+  | "lead";
 
 export default function ProjectContainer() {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>("all");
+  const pathname = usePathname();
 
   const filteredProjects =
     activeFilter === "all"
@@ -52,6 +63,17 @@ export default function ProjectContainer() {
             <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>
+        {pathname !== "/projects" && (
+          <div className="py-4">
+            <Link
+              href="/projects"
+              className="text-gray-400 hover:text-primary underline"
+            >
+              View All Projects{" "}
+              <ArrowRightIcon className="inline-block ml-1 h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </PageTransition>
   );

@@ -14,6 +14,7 @@ import ProjectContainer from "@/components/project/ProjectContainer";
 import TechStacks from "@/components/layout/sections/tect-stack";
 import AboutPage from "@/components/layout/sections/about/About";
 import CurvedLoopClient from "@/components/layout/sections/curved-loop-client";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Khalid Hossain - Frontend Engineer, designer, and Explorer",
@@ -53,7 +54,9 @@ export default function Home() {
       {/* <ServicesSection />  */}
       {/* <FeaturesSection /> */}
       <TechStacks />
-      <ProjectContainer />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ProjectContainer />
+      </Suspense>
       <AboutPage />
       <FAQSection />
       <ContactSection />

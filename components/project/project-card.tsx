@@ -24,6 +24,7 @@ import { useMousePosition } from "@/components/layout/mouse-position-provider";
 import { useMobile } from "@/hooks/use-mobile";
 import type { Project } from "@/types/project";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProjectCardProps {
   project: Project;
@@ -114,24 +115,37 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
           <CardFooter className="flex justify-between">
             <Button variant="outline" size="sm" className="gap-1" asChild>
-              <a
+              <Link
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Globe className="h-4 w-4" />
                 Demo
-              </a>
+              </Link>
             </Button>
             <Button variant="outline" size="sm" className="gap-1" asChild>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="h-4 w-4" />
-                Code
-              </a>
+              {project.githubUrl ? (
+                <Link
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="h-4 w-4" />
+                  Code
+                </Link>
+              ) : (
+                <>
+                  <Badge
+                    variant="outline"
+                    className="cursor-default p-2"
+                    aria-disabled
+                  >
+                    <Github className="h-4 w-4 mr-1" />
+                    private
+                  </Badge>
+                </>
+              )}
             </Button>
           </CardFooter>
         </Card>
@@ -188,24 +202,37 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
             <div className="flex gap-4 pt-4">
               <Button asChild>
-                <a
+                <Link
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Globe className="mr-2 h-4 w-4" />
                   Live Demo
-                </a>
+                </Link>
               </Button>
-              <Button variant="outline" asChild>
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="mr-2 h-4 w-4" />
-                  View Code
-                </a>
+              <Button variant="outline" size="sm" className="gap-1" asChild>
+                {project.githubUrl ? (
+                  <Link
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="h-4 w-4" />
+                    Code
+                  </Link>
+                ) : (
+                  <>
+                    <Badge
+                      variant="outline"
+                      className="cursor-default p-2"
+                      aria-disabled
+                    >
+                      <Github className="h-4 w-4 mr-1" />
+                      private
+                    </Badge>
+                  </>
+                )}
               </Button>
             </div>
           </div>
