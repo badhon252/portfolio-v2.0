@@ -11,7 +11,7 @@ import PageTransition from "../../page-transition";
 export default function AboutPage() {
   return (
     <PageTransition>
-      <div className="container max-w-5xl py-12" id="">
+      <div id="about" className="container max-w-5xl py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

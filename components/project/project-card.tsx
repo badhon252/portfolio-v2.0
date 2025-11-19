@@ -74,8 +74,8 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           <div className="relative aspect-video overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80 z-10"></div>
             <Image
-              width={600}
-              height={300}
+              width={800}
+              height={500}
               src={project.image || `/placeholder.svg?height=300&width=600`}
               alt={project.title}
               className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
@@ -140,7 +140,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-3xl">
           <DialogHeader>
-            <DialogTitle>{project.title}</DialogTitle>
+            <DialogTitle className="text-primary">{project.title}</DialogTitle>
             <DialogDescription>{project.shortDescription}</DialogDescription>
           </DialogHeader>
 
@@ -156,7 +156,9 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
           <div className="space-y-4">
             <div>
-              <h4 className="text-sm font-medium mb-2">Description</h4>
+              <h4 className="text-sm font-medium mb-2 text-nowrap whitespace-nowrap">
+                Description
+              </h4>
               <p className="text-muted-foreground">{project.description}</p>
             </div>
 

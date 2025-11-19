@@ -7,7 +7,7 @@ import ProjectCard from "@/components/project/project-card";
 import ProjectFilter from "@/components/project/project-filter";
 import PageTransition from "@/components/layout/page-transition";
 
-export type ProjectCategory = "all" | "nextjs" | "react" | "saas" | "ai" | "ui";
+export type ProjectCategory = "all" | "nextjs" | "react" | "saas" | "ai" | "ui" | "booking";
 
 export default function ProjectContainer() {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>("all");
@@ -21,7 +21,7 @@ export default function ProjectContainer() {
 
   return (
     <PageTransition>
-      <div className="container max-w-7xl py-12" id="projects">
+      <div id="works" className="container mx-auto py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

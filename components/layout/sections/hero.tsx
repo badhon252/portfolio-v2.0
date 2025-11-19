@@ -5,14 +5,7 @@ import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-b
 
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { Badge } from "@/components/ui/badge";
-// import { ImageSlideshow } from "@/components/ui/ImageSlideshow";
-// import { TextRevealContainer } from "./text-reveal";
-// import { TextReveal } from "@/components/magicui/text-reveal";
-// import { ThreeDMarquee } from "@/components/ui/3d-marquee";
-import ThreeDMarqueeDemo from "./hero-marquee-demo";
-// import { BackgroundLines } from "@/components/ui/background-lines";
-// import BackgroundLinesDemo from "./background-lines";
-// import DarkVeilEffect from "./hero/dark-veil-effect";
+
 const DarkVeilEffect = dynamic(() => import("./hero/dark-veil-effect"), {
   ssr: false,
 });
@@ -27,7 +20,10 @@ export const HeroSection = () => {
     "/pacific-rim-dashboard.png",
   ];
   return (
-    <section className=" relative min-h-screen flex items-center justify-center overflow-hidden ">
+    <section
+      id=""
+      className=" relative min-h-screen flex items-center justify-center overflow-hidden -mt-[58px]"
+    >
       <div className="absolute inset-0 ">
         <DarkVeilEffect />
       </div>
