@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { SideDock } from "@/components/layout/sections/SideDock";
 import LenisProvider from "@/lib/provider/LenisProvider";
+import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -31,10 +32,11 @@ export default function RootLayout({
           >
             <SideDock />
 
-            <ScrollProgress className="top-[0]" />
+            <ScrollProgress className="top-[100000000000000000]" />
             <Navbar />
 
             {children}
+            <Toaster richColors />
           </ThemeProvider>
         </LenisProvider>
       </body>
