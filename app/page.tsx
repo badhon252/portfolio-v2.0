@@ -2,10 +2,10 @@
 import { HeroSection } from "@/components/layout/sections/hero";
 // import { CommunitySection } from "@/components/layout/sections/community";
 import { FAQSection } from "@/components/layout/sections/faq";
-import { FeaturesSection } from "@/components/layout/sections/features";
+// import { FeaturesSection } from "@/components/layout/sections/features";
 // import { PricingSection } from "@/components/layout/sections/pricing";
 // import { ServicesSection } from "@/components/layout/sections/services";
-import { ClientsSection } from "@/components/layout/sections/clients";
+// import { ClientsSection } from "@/components/layout/sections/clients";
 // import { TeamSection } from "@/components/layout/sections/team";
 // import { TestimonialSection } from "@/components/layout/sections/testimonial";
 import { ContactSection } from "@/components/layout/sections/contact";
@@ -13,7 +13,7 @@ import { FooterSection } from "@/components/layout/sections/footer";
 import ProjectContainer from "@/components/project/ProjectContainer";
 import TechStacks from "@/components/layout/sections/tect-stack";
 import AboutPage from "@/components/layout/sections/about/About";
-import CurvedLoopClient from "@/components/layout/sections/curved-loop-client";
+// import CurvedLoopClient from "@/components/layout/sections/curved-loop-client";
 import { Suspense } from "react";
 
 export const metadata = {
@@ -50,10 +50,11 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <ClientsSection />
+      {/* <ClientsSection /> */}
       {/* <TestimonialSection /> */}
       {/* <ServicesSection />  */}
       {/* <FeaturesSection /> */}
+      {/* <CurvedLoopClient /> */}
       <TechStacks />
       <Suspense fallback={<div>Loading...</div>}>
         <ProjectContainer />
