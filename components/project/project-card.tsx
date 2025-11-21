@@ -24,6 +24,7 @@ import { useMousePosition } from "@/components/layout/mouse-position-provider";
 import { useMobile } from "@/hooks/use-mobile";
 import type { Project } from "@/types/project";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProjectCardProps {
   project: Project;
@@ -74,8 +75,8 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           <div className="relative aspect-video overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80 z-10"></div>
             <Image
-              width={600}
-              height={300}
+              width={800}
+              height={500}
               src={project.image || `/placeholder.svg?height=300&width=600`}
               alt={project.title}
               className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
@@ -114,24 +115,37 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
           <CardFooter className="flex justify-between">
             <Button variant="outline" size="sm" className="gap-1" asChild>
-              <a
+              <Link
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Globe className="h-4 w-4" />
                 Demo
-              </a>
+              </Link>
             </Button>
             <Button variant="outline" size="sm" className="gap-1" asChild>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="h-4 w-4" />
-                Code
-              </a>
+              {project.githubUrl ? (
+                <Link
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="h-4 w-4" />
+                  Code
+                </Link>
+              ) : (
+                <>
+                  <Badge
+                    variant="outline"
+                    className="cursor-default p-2"
+                    aria-disabled
+                  >
+                    <Github className="h-4 w-4 mr-1" />
+                    private
+                  </Badge>
+                </>
+              )}
             </Button>
           </CardFooter>
         </Card>
@@ -140,7 +154,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-3xl">
           <DialogHeader>
-            <DialogTitle>{project.title}</DialogTitle>
+            <DialogTitle className="text-primary">{project.title}</DialogTitle>
             <DialogDescription>{project.shortDescription}</DialogDescription>
           </DialogHeader>
 
@@ -156,7 +170,9 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
           <div className="space-y-4">
             <div>
-              <h4 className="text-sm font-medium mb-2">Description</h4>
+              <h4 className="text-sm font-medium mb-2 text-nowrap whitespace-nowrap">
+                Description
+              </h4>
               <p className="text-muted-foreground">{project.description}</p>
             </div>
 
@@ -186,24 +202,37 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
             <div className="flex gap-4 pt-4">
               <Button asChild>
-                <a
+                <Link
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Globe className="mr-2 h-4 w-4" />
                   Live Demo
-                </a>
+                </Link>
               </Button>
-              <Button variant="outline" asChild>
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="mr-2 h-4 w-4" />
-                  View Code
-                </a>
+              <Button variant="outline" size="sm" className="gap-1" asChild>
+                {project.githubUrl ? (
+                  <Link
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="h-4 w-4" />
+                    Code
+                  </Link>
+                ) : (
+                  <>
+                    <Badge
+                      variant="outline"
+                      className="cursor-default p-2"
+                      aria-disabled
+                    >
+                      <Github className="h-4 w-4 mr-1" />
+                      private
+                    </Badge>
+                  </>
+                )}
               </Button>
             </div>
           </div>

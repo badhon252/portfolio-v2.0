@@ -1,18 +1,16 @@
 "use client";
+import dynamic from "next/dynamic";
 import { Archivo_Black } from "next/font/google";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { Badge } from "@/components/ui/badge";
+
+const DarkVeilEffect = dynamic(() => import("./hero/dark-veil-effect"), {
+  ssr: false,
+});
+
 // import { ImageSlideshow } from "@/components/ui/ImageSlideshow";
-// import { TextRevealContainer } from "./text-reveal";
-// import { TextReveal } from "@/components/magicui/text-reveal";
-// import { ThreeDMarquee } from "@/components/ui/3d-marquee";
-import ThreeDMarqueeDemo from "./hero-marquee-demo";
-// import { BackgroundLines } from "@/components/ui/background-lines";
-// import BackgroundLinesDemo from "./background-lines";
-import DarkVeilEffect from "./hero/dark-veil-effect";
-import { ImageSlideshow } from "@/components/ui/ImageSlideshow";
 const archivoBlack = Archivo_Black({ weight: "400", subsets: ["latin"] });
 
 export const HeroSection = () => {
@@ -22,14 +20,17 @@ export const HeroSection = () => {
     "/pacific-rim-dashboard.png",
   ];
   return (
-    <section className=" relative min-h-screen flex items-center justify-center overflow-hidden ">
+    <section
+      id=""
+      className=" relative min-h-screen flex items-center justify-center overflow-hidden -mt-[58px]"
+    >
       <div className="absolute inset-0 ">
         <DarkVeilEffect />
       </div>
       <div className="relative grid place-items-center  gap-8 mx-auto py-20 md:py-32  backdrop-blur-sm">
         <div className="text-center space-y-8">
           {/* <BackgroundLines className="flex items-center justify-center w-full flex-col px-4"> */}
-          <Badge variant="outline" className="text-sm py-2 backdrop-blur-2xl">
+          <Badge variant="outline" className="text-sm py-2 backdrop-blur-3xl">
             <span className="mr-2 bg-primary !text-black rounded-xl">
               <Badge>Role</Badge>
             </span>

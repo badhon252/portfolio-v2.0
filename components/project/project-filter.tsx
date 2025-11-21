@@ -11,11 +11,12 @@ interface ProjectFilterProps {
 
 const filters: { value: ProjectCategory; label: string }[] = [
   { value: "all", label: "All Projects" },
-  { value: "nextjs", label: "Next.js" },
-  { value: "react", label: "React" },
+  { value: "service", label: "Service" },
+  { value: "ecommerce", label: "E-commerce" },
   { value: "saas", label: "SaaS" },
   { value: "ai", label: "AI" },
-  { value: "ui", label: "UI/UX" },
+  { value: "booking", label: "Booking System" },
+  { value: "lead", label: "Lead Generation" },
 ];
 
 export default function ProjectFilter({

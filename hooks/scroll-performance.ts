@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 /**
  * Hook to optimize scroll performance by detecting fast scrolling
@@ -11,7 +11,7 @@ export function useScrollPerformance() {
 
   useEffect(() => {
     let ticking = false;
-    let lastScrollY = 0;
+    let lastScrollY = 1;
     let lastScrollTime = Date.now();
 
     const onScroll = () => {
@@ -36,10 +36,10 @@ export function useScrollPerformance() {
       }
     };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
@@ -55,7 +55,7 @@ export function useScrollPerformance() {
  */
 export function usePauseAnimationOnScroll() {
   const { isScrollingFast } = useScrollPerformance();
-  
+
   return {
     shouldReduceMotion: isScrollingFast,
     transitionDuration: isScrollingFast ? 0 : 0.3,

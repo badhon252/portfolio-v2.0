@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <>
-      <div className="nf-container">
+      <div className="nf-container mt-[-58px]">
         <h1 className="nf-title">404</h1>
         <p className="nf-text">
           Oops! The page you&apos;re looking for doesn&apos;t exist.
@@ -19,7 +19,7 @@ export default function NotFound() {
         .nf-container {
           height: 100vh;
           width: 100%;
-          background: #f7f7f7;
+          background: #201e1e;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -31,14 +31,14 @@ export default function NotFound() {
         .nf-title {
           font-size: 120px;
           font-weight: 800;
-          color: #222;
+          color: #c7c2c2;
           margin: 0;
           animation: fadeDown 0.7s ease-in-out;
         }
 
         .nf-text {
           font-size: 20px;
-          color: #666;
+          color: #979696;
           margin-top: 15px;
           animation: fadeIn 1s ease-in-out;
         }
