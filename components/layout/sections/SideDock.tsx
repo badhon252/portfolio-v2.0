@@ -94,6 +94,8 @@ export function SideDock() {
             key={name}
             href={social.url}
             aria-label={social.name}
+            target="_blank"
+            rel="noreferrer"
             className={cn(
               buttonVariants({ variant: "ghost", size: "icon" }),
               "size-12 rounded-full"
