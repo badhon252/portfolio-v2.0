@@ -23,22 +23,23 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background", inter.className)}>
-        <LenisProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
-          >
+            >
             <SideDock />
 
             <ScrollProgress className="top-[100000000000000000]" />
-            <Navbar />
-
-            {children}
             <Toaster richColors />
+            
+              <Navbar />
+             <LenisProvider>
+
+              {children}
+            </LenisProvider>
           </ThemeProvider>
-        </LenisProvider>
       </body>
     </html>
   );

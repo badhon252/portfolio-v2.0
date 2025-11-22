@@ -63,22 +63,22 @@ const DATA = {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "#",
+        url: "http://github.com/badhon252/",
         icon: Icons.github,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "#",
+        url: "http://linkedin.com/in/khalidhossainbadhon",
         icon: Icons.linkedin,
       },
       X: {
         name: "X",
-        url: "#",
+        url: "https://x.com/badhon252",
         icon: Icons.x,
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:dev.khalidhossain@gmail.com",
         icon: Icons.email,
       },
     },
