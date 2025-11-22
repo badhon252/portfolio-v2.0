@@ -25,6 +25,7 @@ import { useMobile } from "@/hooks/use-mobile";
 import type { Project } from "@/types/project";
 import Image from "next/image";
 import Link from "next/link";
+import { ScrollArea } from "../ui/scroll-area";
 
 interface ProjectCardProps {
   project: Project;
@@ -90,10 +91,11 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                 variant="ghost"
                 size="icon"
                 className="h-8 w-8"
-                onClick={() => setIsOpen(true)}
               >
+                <Link href={`/projects/${project.title.toLowerCase().replace(/\s+/g, "-")}`}>
                 <ArrowUpRight className="h-4 w-4" />
-                <span className="sr-only">View project details</span>
+                <span className="sr-only">Go to project details</span>
+                </Link>
               </Button>
             </div>
             <CardDescription>{project.shortDescription}</CardDescription>
@@ -153,89 +155,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-3xl">
-          <DialogHeader>
-            <DialogTitle className="text-primary">{project.title}</DialogTitle>
-            <DialogDescription>{project.shortDescription}</DialogDescription>
-          </DialogHeader>
-
-          <div className="relative aspect-video rounded-md overflow-hidden mb-4">
-            <Image
-              width={600}
-              height={300}
-              src={project.image || `/placeholder.svg?height=300&width=600`}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <h4 className="text-sm font-medium mb-2 text-nowrap whitespace-nowrap">
-                Description
-              </h4>
-              <p className="text-muted-foreground">{project.description}</p>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-medium mb-2">Technologies</h4>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <Badge
-                    key={tech}
-                    variant="secondary"
-                    className="bg-secondary/10"
-                  >
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-medium mb-2">Features</h4>
-              <ul className="list-disc list-inside text-muted-foreground">
-                {project.features.map((feature, i) => (
-                  <li key={i}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex gap-4 pt-4">
-              <Button asChild>
-                <Link
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Globe className="mr-2 h-4 w-4" />
-                  Live Demo
-                </Link>
-              </Button>
-              <Button variant="outline" size="sm" className="gap-1" asChild>
-                {project.githubUrl ? (
-                  <Link
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github className="h-4 w-4" />
-                    Code
-                  </Link>
-                ) : (
-                  <>
-                    <Badge
-                      variant="outline"
-                      className="cursor-default p-2"
-                      aria-disabled
-                    >
-                      <Github className="h-4 w-4 mr-1" />
-                      private
-                    </Badge>
-                  </>
-                )}
-              </Button>
-            </div>
-          </div>
+      
         </DialogContent>
       </Dialog>
     </>

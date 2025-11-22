@@ -61,7 +61,9 @@ export default function Home() {
       </Suspense>
       <AboutPage />
       <FAQSection />
-      <ContactSection />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ContactSection />
+      </Suspense>
       <FooterSection />
     </>
   );
