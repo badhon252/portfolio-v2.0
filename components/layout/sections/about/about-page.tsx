@@ -22,7 +22,7 @@ export default function AboutPage() {
             About <span className="text-gradient">Me</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Frontend engineer and future solopreneur from Barishal, Bangladesh,
+            Frontend engineer and future solopreneur from Dhaka, Bangladesh. I&apos;m
             passionate about creating innovative digital experiences.
           </p>
         </motion.div>

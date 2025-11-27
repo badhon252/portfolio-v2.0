@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { SideDock } from "@/components/layout/sections/SideDock";
 import LenisProvider from "@/lib/provider/LenisProvider";
+import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,21 +23,23 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background", inter.className)}>
-        <LenisProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
-          >
+            >
             <SideDock />
 
-            <ScrollProgress className="top-[0]" />
-            <Navbar />
+            <ScrollProgress className="top-[100000000000000000]" />
+            <Toaster richColors />
+            
+              <Navbar />
+             <LenisProvider>
 
-            {children}
+              {children}
+            </LenisProvider>
           </ThemeProvider>
-        </LenisProvider>
       </body>
     </html>
   );

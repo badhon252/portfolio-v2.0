@@ -6,7 +6,7 @@ const CurvedLoop = ({
   marqueeText = "",
   speed = 2,
   className,
-  curveAmount = 400,
+  curveAmount = 200, // reduced curve amount to lower height
   direction = "left",
   interactive = true,
 }) => {
@@ -24,7 +24,7 @@ const CurvedLoop = ({
   const [offset, setOffset] = useState(0);
   const uid = useId();
   const pathId = `curve-${uid}`;
-  const pathD = `M-100,40 Q500,${40 + curveAmount} 1540,40`;
+  const pathD = `M-100,20 Q500,${20 + curveAmount} 1540,20`; // reduced y position
 
   const dragRef = useRef(false);
   const lastXRef = useRef(0);
@@ -119,13 +119,29 @@ const CurvedLoop = ({
   return (
     <div
       className="curved-loop-jacket"
-      style={{ visibility: ready ? "visible" : "hidden", cursor: cursorStyle }}
+      style={{
+        visibility: ready ? "visible" : "hidden",
+        cursor: cursorStyle,
+        background: "transparent", // transparent background
+        padding: "10px 0",
+      }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}
       onPointerLeave={endDrag}
     >
-      <svg className="curved-loop-svg" viewBox="0 0 1440 120">
+      <div
+        style={{
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: "1.2rem",
+          marginBottom: "5px",
+        }}
+        className="w-full mx-auto"
+      >
+        Clients
+      </div>
+      <svg className="curved-loop-svg" viewBox="0 0 1440 60">
         <text
           ref={measureRef}
           xmlSpace="preserve"

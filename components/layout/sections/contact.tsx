@@ -1,6 +1,7 @@
+
 "use client";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon, Mail } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,128 +15,149 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import LinkedInIcon from "@/components/icons/linkedin-icon";
 import Link from "next/link";
-// import { BorderBeam } from "@/components/magicui/border-beam";
+import { useState } from "react";
+import { toast } from "sonner"; // or your preferred toast library
 
 const formSchema = z.object({
-  firstName: z.string().min(2).max(255),
-  lastName: z.string().min(2).max(255),
-  email: z.string().email(),
+  firstName: z.string().min(2, "First name must be at least 2 characters").max(255),
+  lastName: z.string().min(2, "Last name must be at least 2 characters").max(255),
+  email: z.string().email("Please enter a valid email"),
   subject: z.string().min(2).max(255),
-  message: z.string(),
+  message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
+type FormValues = z.infer<typeof formSchema>;
+
+type ContactInfo = {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  value: string;
+  href?: string; // Make href optional
+};
+
+const CONTACT_INFO: ContactInfo[] = [
+  {
+    icon: Mail,
+    label: "Mail US",
+    value: "dev.khalidhossain@gmail.com",
+  },
+  {
+    icon: LinkedinIcon,
+    label: "LinkedIn",
+    value: "Khalid Hossain Badhon",
+    href: "https://www.linkedin.com/in/khalidhossainbadhon/",
+  },
+    {
+    icon: GithubIcon,
+    label: "GitHub",
+    value: "Khalid Hossain Badhon",
+    href: "https://www.github.com/badhon252/",
+  },
+] as const;
+
 export const ContactSection = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
-      subject: "Web Development",
+      subject: "",
       message: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const { firstName, lastName, email, subject, message } = values;
-    console.log(values);
+  async function onSubmit(values: FormValues) {
+    setIsSubmitting(true);
+    
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
-    const mailToLink = `mailto:dev.khalidhossain@gmail.com?subject=${subject}&body=Hello I am ${firstName} ${lastName}, my Email is ${email}. %0D%0A${message}`;
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-    window.location.href = mailToLink;
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success("Message sent successfully!");
+        form.reset();
+      } else {
+        toast.error(data.message || "Failed to send message.");
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
     <section id="contact" className="container py-24 sm:py-32">
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Contact Information */}
         <div>
           <div className="mb-4">
             <h2 className="text-lg text-primary mb-2 tracking-wider">
               Contact
             </h2>
-
             <h2 className="text-3xl md:text-4xl font-bold">Connect With Me</h2>
           </div>
+          
           <p className="mb-8 text-muted-foreground lg:w-5/6">
             Frontend engineer and future solopreneur from Dhaka, Bangladesh,
             passionate about creating innovative digital experiences.
           </p>
 
           <div className="flex flex-col gap-4">
-            {/* <div>
-              <div className="flex gap-2 mb-1">
-                <Building2 />
-                <div className="font-bold">Find us</div>
+            {CONTACT_INFO.map(({ icon: Icon, label, value, href }) => (
+              <div key={label}>
+                <div className="flex gap-2 mb-1">
+                  <Icon className="w-5 h-5" />
+                  <div className="font-bold">{label}</div>
+                </div>
+                <div>
+                  {href ? (
+                    <Link 
+                      href={href} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="hover:underline hover:text-primary transition-colors"
+                    >
+                      {value}
+                    </Link>
+                  ) : (
+                    value
+                  )}
+                </div>
               </div>
-
-              <div>742 Evergreen Terrace, Springfield, IL 62704</div>
-            </div> */}
-
-            {/* <div>
-              <div className="flex gap-2 mb-1">
-                <Phone />
-                <div className="font-bold">Call Me </div>
-              </div>
-
-              <div>+880 1706107019</div>
-            </div> */}
-
-            <div>
-              <div className="flex gap-2 mb-1">
-                <Mail />
-                <div className="font-bold">Mail US</div>
-              </div>
-
-              <div>dev.khalidhossain@gmail.com</div>
-            </div>
-            <div>
-              <div className="flex gap-2 mb-1">
-                <LinkedInIcon />
-                <div className="font-bold">LinkedIn</div>
-              </div>
-
-              <div>
-                <Link href={"https://www.linkedin.com/in/khalidhossainbadhon/"}>
-                  <span className="hover:underline">
-                    Khalid Hossain Badhon
-                  </span>
-                </Link>
-              </div>
-            </div>
-
-            {/* <div>
-              <div className="flex gap-2">
-                <Clock />
-                <div className="font-bold">Visit us</div>
-              </div>
-
-              <div>
-                <div>Monday - Friday</div>
-                <div>8AM - 4PM</div>
-              </div>
-            </div> */}
+            ))}
           </div>
         </div>
 
+        {/* Contact Form */}
         <Card className="bg-muted/60 dark:bg-card">
-          <CardHeader className="text-primary text-2xl"> </CardHeader>
+          <CardHeader className="text-primary text-2xl" />
           <CardContent>
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="grid w-full gap-4"
               >
-                <div className="flex flex-col md:!flex-row gap-8">
+                {/* Name Fields */}
+                <div className="flex flex-col md:flex-row gap-4">
                   <FormField
                     control={form.control}
                     name="firstName"
@@ -143,7 +165,11 @@ export const ContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Khalid" {...field} />
+                          <Input 
+                            placeholder="Khalid" 
+                            disabled={isSubmitting}
+                            {...field} 
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -156,26 +182,10 @@ export const ContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>Last Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Hossain" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="dev.khalidhossain@gmail.com"
-                            {...field}
+                          <Input 
+                            placeholder="Hossain" 
+                            disabled={isSubmitting}
+                            {...field} 
                           />
                         </FormControl>
                         <FormMessage />
@@ -184,72 +194,75 @@ export const ContactSection = () => {
                   />
                 </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Subject</FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select a subject" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="Web Development">
-                              Web Development
-                            </SelectItem>
-                            <SelectItem value="Mobile Development">
-                              Mobile Development
-                            </SelectItem>
-                            <SelectItem value="Figma Design">
-                              Figma Design
-                            </SelectItem>
-                            <SelectItem value="REST API">REST API</SelectItem>
-                            <SelectItem value="FullStack Project">
-                              FullStack Project
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                {/* Email Field */}
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="dev.khalidhossain@gmail.com"
+                          disabled={isSubmitting}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                <div className="flex flex-col gap-1.5">
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            rows={5}
-                            placeholder="Your message..."
-                            className="resize-none"
-                            {...field}
-                          />
-                        </FormControl>
+                {/* Subject Field */}
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Subject</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="e.g., Freelance Project Inquiry, Job Opportunity, Collaboration"
+                          disabled={isSubmitting}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                {/* Message Field */}
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          rows={5}
+                          placeholder="Your message..."
+                          className="resize-none"
+                          disabled={isSubmitting}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                <Button className="mt-4">Send message</Button>
+                {/* Submit Button */}
+               <Button variant="default" className="mt-4 w-full" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send message"}
+                </Button>
               </form>
             </Form>
           </CardContent>
         </Card>
-      </section>
+      </div>
     </section>
   );
 };

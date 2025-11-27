@@ -24,7 +24,7 @@ export const HeroSection = () => {
       id=""
       className=" relative min-h-screen flex items-center justify-center overflow-hidden -mt-[58px]"
     >
-      <div className="absolute inset-0 ">
+      <div className="absolute inset-0 md:block hidden">
         <DarkVeilEffect />
       </div>
       <div className="relative grid place-items-center  gap-8 mx-auto py-20 md:py-32  backdrop-blur-sm">
@@ -40,7 +40,7 @@ export const HeroSection = () => {
           <div className="max-w-screen-md mx-auto text-center text-4xl md:text-6xl font-black">
             <h1 className={archivoBlack.className}>
               Crafting Code, <br />
-              <span className="text-transparent px-2 bg-gradient-to-r from-[blue] to-primary bg-clip-text stroke-cyan-100 stroke-1">
+              <span className="text-transparent px-2 bg-gradient-to-r from-[#00df00] to-primary bg-clip-text stroke-cyan-100 stroke-1">
                 Creating Impact
               </span>
             </h1>

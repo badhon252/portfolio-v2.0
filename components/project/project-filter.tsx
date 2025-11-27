@@ -14,7 +14,7 @@ const filters: { value: ProjectCategory; label: string }[] = [
   { value: "service", label: "Service" },
   { value: "ecommerce", label: "E-commerce" },
   { value: "saas", label: "SaaS" },
-  { value: "ai", label: "AI" },
+  // { value: "ai", label: "AI" },
   { value: "booking", label: "Booking System" },
   { value: "lead", label: "Lead Generation" },
 ];
