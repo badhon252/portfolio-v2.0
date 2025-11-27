@@ -32,16 +32,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LenisProvider>
-            {children}
-            <CustomCursor />
-          </LenisProvider>
+          <Navbar />
+
+          <LenisProvider>{children}</LenisProvider>
+
           <SideDock />
+          <CustomCursor />
           <SpeedInsights />
           <ScrollProgress className="top-[100000000000000000]" />
           <Toaster richColors />
-
-          <Navbar />
         </ThemeProvider>
       </body>
     </html>
