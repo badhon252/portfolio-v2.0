@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight, Github, Globe } from "lucide-react";
 import {
   Card,
@@ -20,7 +20,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useMousePosition } from "@/components/layout/mouse-position-provider";
 import { useMobile } from "@/hooks/use-mobile";
 import type { Project } from "@/types/project";
 import Image from "next/image";
@@ -35,25 +34,42 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const mousePosition = useMousePosition();
   const isMobile = useMobile();
 
-  // Calculate card tilt based on mouse position
-  const calculateTilt = () => {
-    if (isMobile || !cardRef.current) return { x: 0, y: 0 };
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-    const { left, top, width, height } =
-      cardRef.current.getBoundingClientRect();
-    const centerX = left + width / 2;
-    const centerY = top + height / 2;
+  const mouseX = useSpring(x, { stiffness: 500, damping: 100 });
+  const mouseY = useSpring(y, { stiffness: 500, damping: 100 });
 
-    const x = (mousePosition.x - centerX) / (width / 2);
-    const y = (mousePosition.y - centerY) / (height / 2);
+  const rotateX = useTransform(mouseY, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
+  const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
 
-    return { x: y * -5, y: x * 5 }; // Invert for natural tilt
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile || !cardRef.current) return;
+
+    // Optimization: Cache rect if possible or use a more performant way,
+    // but for now, just ensuring we don't do this calculation if not needed.
+    // The main lag source is likely the blur in AboutSection.
+    const rect = cardRef.current.getBoundingClientRect();
+
+    const width = rect.width;
+    const height = rect.height;
+
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
   };
 
-  const tilt = calculateTilt();
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
     <>
@@ -62,61 +78,83 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px" }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         style={{
-          transform: isMobile
-            ? "none"
-            : `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+          rotateX: isMobile ? 0 : rotateX,
+          rotateY: isMobile ? 0 : rotateY,
           transformStyle: "preserve-3d",
         }}
-        whileHover={{ scale: 1.02 }}
-        className="blueprint-reveal transition-all duration-300"
+        className="blueprint-reveal h-full will-change-transform"
       >
-        <Card className="h-full overflow-hidden border-border hover:border-primary/50 transition-colors duration-300">
-          <div className="relative aspect-video overflow-hidden">
+        <Card className="h-full overflow-hidden border-border hover:border-primary/50 transition-colors duration-300 flex flex-col group">
+          <div
+            className="relative aspect-video overflow-hidden"
+            style={{ transform: "translateZ(50px)" }}
+          >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80 z-10"></div>
             <Image
               width={800}
               height={500}
               src={project.image || `/placeholder.svg?height=300&width=600`}
               alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
 
           <CardHeader>
             <div className="flex justify-between items-start">
-              <CardTitle className="text-xl">{project.title}</CardTitle>
+              <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                {project.title}
+              </CardTitle>
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8"
+                className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                asChild
               >
-                <Link href={`/projects/${project.title.toLowerCase().replace(/\s+/g, "-")}`}>
-                <ArrowUpRight className="h-4 w-4" />
-                <span className="sr-only">Go to project details</span>
+                <Link
+                  href={`/projects/${project.title
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}`}
+                >
+                  <ArrowUpRight className="h-4 w-4" />
+                  <span className="sr-only">Go to project details</span>
                 </Link>
               </Button>
             </div>
-            <CardDescription>{project.shortDescription}</CardDescription>
+            <CardDescription className="line-clamp-2">
+              {project.shortDescription}
+            </CardDescription>
           </CardHeader>
 
-          <CardContent>
+          <CardContent className="flex-grow">
             <div className="flex flex-wrap gap-2 mb-4">
-              {project.technologies.map((tech) => (
+              {project.technologies.slice(0, 4).map((tech) => (
                 <Badge
                   key={tech}
                   variant="secondary"
-                  className="bg-secondary/10"
+                  className="bg-secondary/10 hover:bg-secondary/20 transition-colors"
                 >
                   {tech}
                 </Badge>
               ))}
+              {project.technologies.length > 4 && (
+                <Badge variant="secondary" className="bg-secondary/10">
+                  +{project.technologies.length - 4}
+                </Badge>
+              )}
             </div>
           </CardContent>
 
-          <CardFooter className="flex justify-between">
-            <Button variant="outline" size="sm" className="gap-1" asChild>
+          <CardFooter className="flex justify-between mt-auto">
+            <Button
+              variant="outline"
+              size="sm"
+              className="gap-1 hover:bg-primary hover:text-primary-foreground transition-colors"
+              asChild
+            >
               <Link
                 href={project.demoUrl}
                 target="_blank"
@@ -126,7 +164,12 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                 Demo
               </Link>
             </Button>
-            <Button variant="outline" size="sm" className="gap-1" asChild>
+            <Button
+              variant="outline"
+              size="sm"
+              className="gap-1 hover:bg-primary hover:text-primary-foreground transition-colors"
+              asChild
+            >
               {project.githubUrl ? (
                 <Link
                   href={project.githubUrl}
@@ -137,16 +180,10 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                   Code
                 </Link>
               ) : (
-                <>
-                  <Badge
-                    variant="outline"
-                    className="cursor-default p-2"
-                    aria-disabled
-                  >
-                    <Github className="h-4 w-4 mr-1" />
-                    private
-                  </Badge>
-                </>
+                <span className="cursor-not-allowed opacity-50">
+                  <Github className="h-4 w-4 mr-1" />
+                  Private
+                </span>
               )}
             </Button>
           </CardFooter>
@@ -154,9 +191,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       </motion.div>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-3xl">
-      
-        </DialogContent>
+        <DialogContent className="max-w-3xl"></DialogContent>
       </Dialog>
     </>
   );

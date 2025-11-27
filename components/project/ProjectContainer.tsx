@@ -9,6 +9,7 @@ import PageTransition from "@/components/layout/page-transition";
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { SectionHeader } from "../layout/section-header";
 
 export type ProjectCategory =
   | "all"
@@ -37,15 +38,12 @@ export default function ProjectContainer() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            My <span className="text-gradient">Projects</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my work, from web applications to design systems and
-            experiments.
-          </p>
+          <SectionHeader
+            title="My Projects"
+            description="A showcase of my work, from web applications to design systems and experiments."
+            alignment="center"
+          />
         </motion.div>
 
         <ProjectFilter

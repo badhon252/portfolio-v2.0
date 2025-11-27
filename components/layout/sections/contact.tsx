@@ -1,5 +1,5 @@
-
 "use client";
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { GithubIcon, LinkedinIcon, Mail } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -16,33 +16,28 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import LinkedInIcon from "@/components/icons/linkedin-icon";
 import Link from "next/link";
 import { useState } from "react";
-import { toast } from "sonner"; // or your preferred toast library
+import { toast } from "sonner";
+import { SectionHeader } from "../section-header";
+import { motion } from "framer-motion";
 
 const formSchema = z.object({
-  firstName: z.string().min(2, "First name must be at least 2 characters").max(255),
-  lastName: z.string().min(2, "Last name must be at least 2 characters").max(255),
-  email: z.string().email("Please enter a valid email"),
+  firstName: z.string().min(2).max(255),
+  lastName: z.string().min(2).max(255),
+  email: z.string().email(),
   subject: z.string().min(2).max(255),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  message: z.string().min(10),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-type ContactInfo = {
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-  value: string;
-  href?: string; // Make href optional
-};
-
-const CONTACT_INFO: ContactInfo[] = [
+const CONTACT_INFO = [
   {
     icon: Mail,
-    label: "Mail US",
+    label: "Mail Us",
     value: "dev.khalidhossain@gmail.com",
+    href: "mailto:dev.khalidhossain@gmail.com",
   },
   {
     icon: LinkedinIcon,
@@ -50,11 +45,11 @@ const CONTACT_INFO: ContactInfo[] = [
     value: "Khalid Hossain Badhon",
     href: "https://www.linkedin.com/in/khalidhossainbadhon/",
   },
-    {
+  {
     icon: GithubIcon,
     label: "GitHub",
     value: "Khalid Hossain Badhon",
-    href: "https://www.github.com/badhon252/",
+    href: "https://github.com/badhon252/",
   },
 ] as const;
 
@@ -72,54 +67,54 @@ export const ContactSection = () => {
     },
   });
 
-  async function onSubmit(values: FormValues) {
+  const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
-    
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: JSON.stringify(values),
+        headers: { "Content-Type": "application/json" },
       });
-
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
-      }
 
       const data = await res.json();
 
-      if (data.success) {
-        toast.success("Message sent successfully!");
+      if (res.ok && data.success) {
+        toast.success("Message sent!");
         form.reset();
       } else {
-        toast.error(data.message || "Failed to send message.");
+        toast.error(data.message || "Failed to send");
       }
-    } catch (error) {
-      console.error("Contact form error:", error);
-      toast.error("Something went wrong. Please try again.");
+    } catch {
+      toast.error("Something went wrong.");
     } finally {
       setIsSubmitting(false);
     }
-  }
+  };
 
   return (
-    <section id="contact" className="container py-24 sm:py-32">
+    <motion.section
+      id="contact"
+      className="container py-24 sm:py-32"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }} // animate only once
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Contact Information */}
-        <div>
-          <div className="mb-4">
-            <h2 className="text-lg text-primary mb-2 tracking-wider">
-              Contact
-            </h2>
-            <h2 className="text-3xl md:text-4xl font-bold">Connect With Me</h2>
-          </div>
-          
-          <p className="mb-8 text-muted-foreground lg:w-5/6">
-            Frontend engineer and future solopreneur from Dhaka, Bangladesh,
-            passionate about creating innovative digital experiences.
-          </p>
+        {/* Contact Info */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <SectionHeader
+            title="Connect With Me"
+            description="Frontend engineer and future solopreneur from Dhaka, Bangladesh, passionate about creating innovative digital experiences."
+            alignment="left"
+            className="mb-8"
+          />
 
           <div className="flex flex-col gap-4">
             {CONTACT_INFO.map(({ icon: Icon, label, value, href }) => (
@@ -128,141 +123,146 @@ export const ContactSection = () => {
                   <Icon className="w-5 h-5" />
                   <div className="font-bold">{label}</div>
                 </div>
-                <div>
-                  {href ? (
-                    <Link 
-                      href={href} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="hover:underline hover:text-primary transition-colors"
-                    >
-                      {value}
-                    </Link>
-                  ) : (
-                    value
-                  )}
-                </div>
+
+                {href ? (
+                  <Link
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline hover:text-primary"
+                  >
+                    {value}
+                  </Link>
+                ) : (
+                  value
+                )}
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Form */}
-        <Card className="bg-muted/60 dark:bg-card">
-          <CardHeader className="text-primary text-2xl" />
-          <CardContent>
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="grid w-full gap-4"
-              >
-                {/* Name Fields */}
-                <div className="flex flex-col md:flex-row gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Card className="bg-muted/60 dark:bg-card">
+            <CardHeader className="text-primary text-2xl" />
+            <CardContent>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="grid gap-4"
+                >
+                  {/* Name Fields */}
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <FormField
+                      control={form.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem className="w-full">
+                          <FormLabel>First Name</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Khalid"
+                              disabled={isSubmitting}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem className="w-full">
+                          <FormLabel>Last Name</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Hossain"
+                              disabled={isSubmitting}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  {/* Email */}
                   <FormField
                     control={form.control}
-                    name="firstName"
+                    name="email"
                     render={({ field }) => (
-                      <FormItem className="w-full">
-                        <FormLabel>First Name</FormLabel>
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
                         <FormControl>
-                          <Input 
-                            placeholder="Khalid" 
+                          <Input
+                            type="email"
+                            placeholder="dev.khalidhossain@gmail.com"
                             disabled={isSubmitting}
-                            {...field} 
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+
+                  {/* Subject */}
                   <FormField
                     control={form.control}
-                    name="lastName"
+                    name="subject"
                     render={({ field }) => (
-                      <FormItem className="w-full">
-                        <FormLabel>Last Name</FormLabel>
+                      <FormItem>
+                        <FormLabel>Subject</FormLabel>
                         <FormControl>
-                          <Input 
-                            placeholder="Hossain" 
+                          <Input
+                            placeholder="Freelance Project Inquiry"
                             disabled={isSubmitting}
-                            {...field} 
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                </div>
 
-                {/* Email Field */}
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          placeholder="dev.khalidhossain@gmail.com"
-                          disabled={isSubmitting}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                  {/* Message */}
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Message</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            rows={5}
+                            placeholder="Your message..."
+                            disabled={isSubmitting}
+                            className="resize-none"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                {/* Subject Field */}
-                <FormField
-                  control={form.control}
-                  name="subject"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Subject</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="e.g., Freelance Project Inquiry, Job Opportunity, Collaboration"
-                          disabled={isSubmitting}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                {/* Message Field */}
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Message</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          rows={5}
-                          placeholder="Your message..."
-                          className="resize-none"
-                          disabled={isSubmitting}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                {/* Submit Button */}
-               <Button variant="default" className="mt-4 w-full" disabled={isSubmitting}>
-                  {isSubmitting ? "Sending..." : "Send message"}
-                </Button>
-              </form>
-            </Form>
-          </CardContent>
-        </Card>
+                  <Button className="w-full mt-4" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </Button>
+                </form>
+              </Form>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };

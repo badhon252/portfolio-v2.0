@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { SectionHeader } from "../section-header";
 
 interface FAQProps {
   question: string;
@@ -23,7 +24,7 @@ const FAQList: FAQProps[] = [
     answer:
       "I’m focused on modern front-end development using React.js, Next.js, and Inertia.js. I work confidently with JavaScript and TypeScript, and I’ve built full-stack features using Laravel APIs, Express.js, and MongoDB. My core strengths also include crafting responsive, high-performance interfaces and building multilingual web applications.",
     value: "item-1",
-},
+  },
   {
     question: "Do you have experience with state management?",
     answer:
@@ -53,15 +54,12 @@ const FAQList: FAQProps[] = [
 export const FAQSection = () => {
   return (
     <section id="faq" className="container md:w-[700px] py-24 sm:py-32">
-      <div className="text-center mb-8">
-        <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-          FAQS
-        </h2>
-
-        <h2 className="text-3xl md:text-4xl text-center font-bold">
-          Common Questions
-        </h2>
-      </div>
+      <SectionHeader
+        title="Common Questions"
+        description="FAQS"
+        alignment="center"
+        className="mb-8"
+      />
 
       <Accordion type="single" collapsible className="AccordionRoot">
         {FAQList.map(({ question, answer, value }) => (

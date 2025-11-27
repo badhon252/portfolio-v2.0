@@ -8,6 +8,9 @@ import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { SideDock } from "@/components/layout/sections/SideDock";
 import LenisProvider from "@/lib/provider/LenisProvider";
 import { Toaster } from "sonner";
+import { CustomCursor } from "@/components/ui/custom-cursor";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,23 +26,23 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background", inter.className)}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-            >
-            <SideDock />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <LenisProvider>
+            {children}
+            <CustomCursor />
+          </LenisProvider>
+          <SideDock />
+          <SpeedInsights />
+          <ScrollProgress className="top-[100000000000000000]" />
+          <Toaster richColors />
 
-            <ScrollProgress className="top-[100000000000000000]" />
-            <Toaster richColors />
-            
-              <Navbar />
-             <LenisProvider>
-
-              {children}
-            </LenisProvider>
-          </ThemeProvider>
+          <Navbar />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -27,7 +27,7 @@ function AboutSection() {
         >
           <div className="relative w-full aspect-square max-w-md mx-auto">
             {/* Gradient Background Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-blue-500/20 to-purple-500/20 rounded-2xl blur-3xl group-hover:blur-2xl transition-all duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-blue-500/20 to-purple-500/20 rounded-2xl blur-2xl" />
 
             {/* Image Container */}
             <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-primary/20 shadow-2xl">
@@ -35,7 +35,7 @@ function AboutSection() {
                 src="/khalid Hossain Badhon.png"
                 alt="Khalid Hossain - Frontend Engineer"
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 group-hover:scale-105 will-change-transform"
                 priority
               />
 

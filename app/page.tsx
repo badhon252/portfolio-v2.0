@@ -58,16 +58,16 @@ export default function Home() {
       {/* <ServicesSection />  */}
       {/* <FeaturesSection /> */}
       {/* <CurvedLoopClient /> */}
+      <AboutSection />
       <TechStacks />
       <Suspense fallback={<div>Loading...</div>}>
         <ProjectContainer />
       </Suspense>
       {/* <AboutPage /> */}
-      <AboutSection />
       <FAQSection />
-      <Suspense fallback={<div>Loading...</div>}>
-        <ContactSection />
-      </Suspense>
+      <ContactSection />
+      {/* <Suspense fallback={<div>Loading...</div>}>
+      </Suspense> */}
       <FooterSection />
     </>
   );
