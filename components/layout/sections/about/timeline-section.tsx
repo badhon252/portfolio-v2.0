@@ -38,6 +38,9 @@ export default function TimelineSection() {
                   {item.date}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-sm text-primary/50 font-medium mb-2">
+                  {item.institution}
+                </p>
                 <p className="text-muted-foreground">{item.description}</p>
               </div>
             </div>
