@@ -35,7 +35,6 @@ export default function RootLayout({
           <Navbar />
 
           <LenisProvider>{children}</LenisProvider>
-          {/* {children} */}
           <SideDock />
           <CustomCursor />
           <SpeedInsights />

@@ -17,8 +17,9 @@ export const FooterSection = () => {
                 height={40}
                 className="rounded-full"
               />
-              <span className="pl-2 lg:text-6xl md:text-3xl  font-black">Khalid Hossain Badhon</span>
-              
+              <span className="pl-2 lg:text-6xl md:text-3xl  font-black">
+                Khalid Hossain Badhon
+              </span>
             </Link>
           </div>
 
@@ -40,9 +41,12 @@ export const FooterSection = () => {
             </div>
 
             <div>
-              <Link href="https://wa.me/8801605860143?text=Hello%20there!" className="opacity-60 hover:opacity-100"
-              target="_blank" // opens in new tab
-              rel="noopener noreferrer">
+              <Link
+                href="https://wa.me/8801605860143?text=Hello%20there!"
+                className="opacity-60 hover:opacity-100"
+                target="_blank" // opens in new tab
+                rel="noopener noreferrer"
+              >
                 WhatsApp
               </Link>
             </div>
