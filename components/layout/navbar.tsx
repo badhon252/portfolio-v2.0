@@ -2,15 +2,7 @@
 import { Github, LinkedinIcon, Mail } from "lucide-react";
 import React from "react";
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "../ui/navigation-menu";
-
 import { Icons } from "./sections/constants";
-import { Separator } from "../ui/separator";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../ui/button";
@@ -106,28 +98,6 @@ export const Navbar = () => {
 
         <div className="hidden lg:flex">
           {/* <ToggleTheme /> */}
-          <Button asChild size="sm" variant="ghost" aria-label="Send Email">
-            <Link
-              aria-label="Send Email"
-              href="mailto:dev.khalidhossain@gmail.com"
-            >
-              <Mail className="size-5" />
-            </Link>
-          </Button>
-          <Button
-            asChild
-            size="sm"
-            variant="ghost"
-            aria-label="View on LinkedIn"
-          >
-            <Link
-              aria-label="View on LinkedIn"
-              href="https://www.linkedin.com/in/khalidhossainbadhon/"
-              target="_blank"
-            >
-              <LinkedinIcon className="size-5" />
-            </Link>
-          </Button>
           <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
             <Link
               aria-label="View on GitHub"

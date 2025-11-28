@@ -174,6 +174,45 @@ export function MobileNav() {
                 </Link>
               </Button>
             </div>
+            <Separator />
+            <div className="flex mt-4">
+              <Button asChild size="sm" variant="ghost" aria-label="Send Email">
+                <Link
+                  aria-label="Send Email"
+                  href="mailto:dev.khalidhossain@gmail.com"
+                >
+                  <Mail className="size-5" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="sm"
+                variant="ghost"
+                aria-label="View on LinkedIn"
+              >
+                <Link
+                  aria-label="View on LinkedIn"
+                  href="https://www.linkedin.com/in/khalidhossainbadhon/"
+                  target="_blank"
+                >
+                  <LinkedinIcon className="size-5" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="sm"
+                variant="ghost"
+                aria-label="View on GitHub"
+              >
+                <Link
+                  aria-label="View on GitHub"
+                  href="https://github.com/badhon252"
+                  target="_blank"
+                >
+                  <Github className="size-5" />
+                </Link>
+              </Button>
+            </div>
           </SheetContent>
         </Sheet>
       </div>
