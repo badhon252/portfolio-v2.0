@@ -26,7 +26,7 @@ export const SectionHeader = ({
       )}
     >
       <h2
-        className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-8xl font-black leading-none text-transparent dark:from-white dark:to-slate-900/10 will-change-transform"
+        className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-6xl md:text-8xl font-black leading-none text-transparent dark:from-white dark:to-slate-900/10 will-change-transform"
         style={{ transform: "translateZ(0)", contain: "layout style paint" }}
       >
         {title}

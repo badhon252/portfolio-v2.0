@@ -2,6 +2,7 @@
 // import { ChevronsDownIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { DATA } from "./constants";
 
 export const FooterSection = () => {
   return (
@@ -25,20 +26,6 @@ export const FooterSection = () => {
 
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg">Contact</h3>
-            <div>
-              <Link
-                href="https://github.com/badhon252"
-                className="opacity-60 hover:opacity-100"
-              >
-                Github
-              </Link>
-            </div>
-
-            <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                Twitter
-              </Link>
-            </div>
 
             <div>
               <Link
@@ -96,21 +83,21 @@ export const FooterSection = () => {
 
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg">Socials</h3>
-            {/* <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                Twitch
-              </Link>
-            </div> */}
-
+            {Object.entries(DATA.contact.social).map(([name, social]) => (
+              <div key={name}>
+                <Link
+                  href={social.url}
+                  className="opacity-60 hover:opacity-100 flex items-center gap-2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {social.name}
+                </Link>
+              </div>
+            ))}
             <div>
               <Link href="#" className="opacity-60 hover:opacity-100">
                 Discord
-              </Link>
-            </div>
-
-            <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                LinkedIn
               </Link>
             </div>
           </div>

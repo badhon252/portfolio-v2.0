@@ -68,7 +68,7 @@ function AboutSection() {
           className="space-y-6"
         >
           <div className="space-y-4">
-            <Badge variant="outline" className="text-sm">
+            <Badge variant="outline" className="text-sm border-primary">
               About Me
             </Badge>
 

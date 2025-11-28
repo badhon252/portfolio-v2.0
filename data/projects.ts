@@ -49,7 +49,7 @@ export const projectsData: Project[] = [
     shortDescription:
       "At CQD Cleaning Service, our expert team and advanced tools ensure top-tier cleanliness, health, and safety—delivering spotless results you can trust every time.",
     description: `Since 2012, CQD Cleaning Service has offered trusted, top-quality cleaning . We’re committed to excellence and exceeding every client’s expectations—every time.
-At CQD Cleaning Service, we offer affordable, top-tier cleaning solutions without compromising quality. Choose flexible packages tailored to your needs and enjoy efficient service with our 10-mile radius system that reduces cost and saves time. Our fully trained professionals are committed to delivering spotless results with care, precision, and unmatched dedication.`,
+        At CQD Cleaning Service, we offer affordable, top-tier cleaning solutions without compromising quality. Choose flexible packages tailored to your needs and enjoy efficient service with our 10-mile radius system that reduces cost and saves time. Our fully trained professionals are committed to delivering spotless results with care, precision, and unmatched dedication.`,
     image: "/project/cqd/cqd.png",
     technologies: [
       "Next.js",

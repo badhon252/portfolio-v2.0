@@ -1,15 +1,7 @@
 "use client";
-import { Github, Menu, LinkedinIcon } from "lucide-react";
+import { Github, LinkedinIcon, Mail } from "lucide-react";
 import React from "react";
-import {
-  Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "../ui/sheet";
-import { Separator } from "../ui/separator";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -17,10 +9,13 @@ import {
   NavigationMenuList,
 } from "../ui/navigation-menu";
 
-import { Button } from "../ui/button";
+import { Icons } from "./sections/constants";
+import { Separator } from "../ui/separator";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
+import ContactMedium from "./contact-mediums";
+
 // import { ToggleTheme } from "./toogle-theme";
 
 interface RouteProps {
@@ -48,7 +43,6 @@ const routeList: RouteProps[] = [
 ];
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
   // const [activeSection, setActiveSection] = React.useState("");
 
   // React.useEffect(() => {
@@ -94,77 +88,32 @@ export const Navbar = () => {
 
         {/* <!-- Mobile --> */}
         <div className="flex items-center lg:hidden">
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Menu
-                onClick={() => setIsOpen(!isOpen)}
-                className="cursor-pointer lg:hidden"
-              />
-            </SheetTrigger>
-
-            <SheetContent
-              side="left"
-              className="flex flex-col justify-between rounded-tr-2xl rounded-br-2xl bg-card border-secondary"
-            >
-              <div>
-                <SheetHeader className="mb-4 ml-4">
-                  <SheetTitle className="flex items-center">
-                    <Link href="/" className="flex items-center">
-                      <Image
-                        src="https://portfolio-v1-rho-orcin.vercel.app/_next/image?url=%2Fimages%2Favatar.jpg&w=256&q=75"
-                        alt="Khalid Hossain"
-                        width={40}
-                        height={40}
-                        className="rounded-full"
-                      />
-                      <span className="pl-2">Khalid Hossain</span>
-                    </Link>
-                  </SheetTitle>
-                </SheetHeader>
-
-                <div className="flex flex-col gap-2">
-                  {routeList.map(({ href, label }) => (
-                    <Button
-                      key={href}
-                      onClick={() => setIsOpen(false)}
-                      asChild
-                      variant="ghost"
-                      className={`justify-start text-base`}
-                    >
-                      <Link href={href}>{label}</Link>
-                    </Button>
-                  ))}
-                </div>
-              </div>
-
-              {/* <SheetFooter className="flex-col sm:flex-col justify-start items-start">
-                <Separator className="mb-2" />
-                <ToggleTheme />
-              </SheetFooter> */}
-            </SheetContent>
-          </Sheet>
+          <Link
+            href="https://wa.me/8801605860143"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-muted-foreground hover:text-[#25D366] transition-colors"
+            aria-label="Chat on WhatsApp"
+          >
+            <Icons.whatsapp className="w-6 h-6" />
+          </Link>
         </div>
 
         {/* <!-- Desktop --> */}
-        <NavigationMenu className="hidden lg:block mx-auto">
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              {routeList.map(({ href, label }) => (
-                <NavigationMenuLink key={href} asChild>
-                  <Link
-                    href={href}
-                    className={`text-base px-4 py-2 rounded-lg transition-all duration-200`}
-                  >
-                    {label}
-                  </Link>
-                </NavigationMenuLink>
-              ))}
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className="hidden lg:block mx-auto">
+          <ContactMedium routeList={routeList} />
+        </div>
 
         <div className="hidden lg:flex">
           {/* <ToggleTheme /> */}
+          <Button asChild size="sm" variant="ghost" aria-label="Send Email">
+            <Link
+              aria-label="Send Email"
+              href="mailto:dev.khalidhossain@gmail.com"
+            >
+              <Mail className="size-5" />
+            </Link>
+          </Button>
           <Button
             asChild
             size="sm"

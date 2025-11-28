@@ -6,9 +6,11 @@ import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { SideDock } from "@/components/layout/sections/SideDock";
+import { MobileNav } from "@/components/layout/mobile-nav";
 import LenisProvider from "@/lib/provider/LenisProvider";
 import { Toaster } from "sonner";
 import { CustomCursor } from "@/components/ui/custom-cursor";
+import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -36,7 +38,9 @@ export default function RootLayout({
 
           <LenisProvider>{children}</LenisProvider>
           <SideDock />
+          <MobileNav />
           <CustomCursor />
+          <WhatsAppFloat />
           <SpeedInsights />
           <ScrollProgress className="top-[100000000000000000]" />
           <Toaster richColors />

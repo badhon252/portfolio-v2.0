@@ -5,6 +5,7 @@ import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-b
 
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 const DarkVeilEffect = dynamic(() => import("./hero/dark-veil-effect"), {
   ssr: false,
@@ -27,7 +28,7 @@ export const HeroSection = () => {
       <div className="absolute inset-0 md:block hidden">
         <DarkVeilEffect />
       </div>
-      <div className="relative grid place-items-center  gap-8 mx-auto py-20 md:py-32  backdrop-blur-sm">
+      <div className="relative grid place-items-center  gap-8 mx-auto py-12 md:py-32  backdrop-blur-sm">
         <div className="text-center space-y-8">
           {/* <BackgroundLines className="flex items-center justify-center w-full flex-col px-4"> */}
           <Badge variant="outline" className="text-sm py-2 backdrop-blur-3xl">
@@ -37,7 +38,7 @@ export const HeroSection = () => {
             <span> Frontend Developer </span>
           </Badge>
 
-          <div className="max-w-screen-md mx-auto text-center text-4xl md:text-6xl font-black">
+          <div className="max-w-screen-md mx-auto text-center text-3xl md:text-6xl font-black">
             <h1 className={archivoBlack.className}>
               Crafting Code, <br />
               <span className="text-transparent px-2 bg-gradient-to-r from-[#00df00] to-primary bg-clip-text stroke-cyan-100 stroke-1">
@@ -54,7 +55,9 @@ export const HeroSection = () => {
 
           <div className="space-y-4 md:space-y-0 md:space-x-4 flex items-center justify-center">
             <InteractiveHoverButton className="py-2 text-lg">
-              My Works
+             <Link href={"/projects"}>
+             My Works
+             </Link>
             </InteractiveHoverButton>
             <ShimmerButton className="shadow-2xl">
               <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">

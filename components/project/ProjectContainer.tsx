@@ -33,7 +33,7 @@ export default function ProjectContainer() {
 
   return (
     <PageTransition>
-      <div id="works" className="container mx-auto py-12">
+      <div id="projects" className="container mx-auto py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

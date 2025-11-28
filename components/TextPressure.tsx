@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface TextPressureProps {
   text?: string;
@@ -84,13 +84,17 @@ const TextPressure: React.FC<TextPressureProps> = ({
     };
   }, []);
 
-  const setSize = () => {
+  const setSize = useCallback(() => {
     if (!containerRef.current || !titleRef.current) return;
 
     const { width: containerW, height: containerH } =
       containerRef.current.getBoundingClientRect();
 
-    let newFontSize = containerW / (chars.length / 2);
+    // Adjust divisor based on screen width for better mobile fitting
+    const isMobile = containerW < 768;
+    const divisor = isMobile ? chars.length / 1.5 : chars.length / 2;
+
+    let newFontSize = containerW / divisor;
     newFontSize = Math.max(newFontSize, minFontSize);
 
     setFontSize(newFontSize);
@@ -107,13 +111,13 @@ const TextPressure: React.FC<TextPressureProps> = ({
         setLineHeight(yRatio);
       }
     });
-  };
+  }, [chars.length, minFontSize, scale]);
 
   useEffect(() => {
     setSize();
     window.addEventListener("resize", setSize);
     return () => window.removeEventListener("resize", setSize);
-  }, [scale, text]);
+  }, [scale, text, setSize]);
 
   useEffect(() => {
     let rafId: number;
@@ -167,7 +171,9 @@ const TextPressure: React.FC<TextPressureProps> = ({
       ref={containerRef}
       className="relative w-full h-full overflow-hidden bg-transparent"
     >
-      <style>{`
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @font-face {
           font-family: '${fontFamily}';
           src: url('${fontUrl}');
@@ -187,7 +193,9 @@ const TextPressure: React.FC<TextPressureProps> = ({
           -webkit-text-stroke-width: ${strokeWidth}px;
           -webkit-text-stroke-color: ${strokeColor};
         }
-      `}</style>
+      `,
+        }}
+      />
 
       <h1
         ref={titleRef}
