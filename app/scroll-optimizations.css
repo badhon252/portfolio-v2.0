@@ -5,21 +5,28 @@ body {
   scrollbar-gutter: stable;
 }
 
-/* Only apply backface optimization for elements that actually animate */
+/* Optimize framer-motion components - Only apply to active animations */
 [data-scroll-animate],
 .framer-motion {
   will-change: transform, opacity;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* Improve rendering of animated canvas elements */
+/* Optimize canvas rendering */
 canvas {
   will-change: contents;
 }
 
-/* Improve lazy image rendering without forcing layout containment */
+/* Improve lazy image rendering */
 img {
-  content-visibility: auto; /* Best for scroll performance */
+  content-visibility: auto;
+}
+
+/* Optimize card components - Only basic containment */
+[class*="card"],
+[class*="Card"] {
+  contain: layout style;
 }
 
 /* Respect users who want reduced motion */
@@ -30,5 +37,11 @@ img {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable will-change for reduced motion */
+  * {
+    will-change: auto !important;
   }
 }

@@ -26,8 +26,8 @@ function AboutSection() {
           className="relative group"
         >
           <div className="relative w-full aspect-square max-w-md mx-auto">
-            {/* Gradient Background Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-blue-500/20 to-purple-500/20 rounded-2xl blur-2xl" />
+            {/* Optimized Gradient Background Effect - Simple Radial Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-blue-500/10 to-purple-500/10 rounded-2xl opacity-50" />
 
             {/* Image Container */}
             <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-primary/20 shadow-2xl">
@@ -35,7 +35,7 @@ function AboutSection() {
                 src="/khalid Hossain Badhon.png"
                 alt="Khalid Hossain - Frontend Engineer"
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105 will-change-transform"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
                 priority
               />
 
@@ -49,7 +49,7 @@ function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="absolute -bottom-6 -right-6 bg-background/95 backdrop-blur-sm border-2 border-primary/30 rounded-xl p-4 shadow-xl"
+              className="absolute -bottom-6 -right-6 bg-background border-2 border-primary/30 rounded-xl p-4 shadow-xl"
             >
               <Badge variant="outline" className="text-sm">
                 <span className="mr-2">🚀</span>
@@ -74,7 +74,7 @@ function AboutSection() {
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               Hi, I&apos;m{" "}
-              <span className="text-transparent bg-gradient-to-r from-blue-500 to-primary bg-clip-text">
+              <span className="text-transparent !font-black bg-gradient-to-r from-blue-500 to-primary bg-clip-text">
                 Khalid Hossain
               </span>
             </h2>

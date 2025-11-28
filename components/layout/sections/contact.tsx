@@ -93,22 +93,16 @@ export const ContactSection = () => {
   };
 
   return (
-    <motion.section
-      id="contact"
-      className="container py-24 sm:py-32"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }} // animate only once
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section id="contact" className="container py-24 sm:py-32">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
         {/* Contact Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
+        <div>
           <SectionHeader
             title="Connect With Me"
             description="Frontend engineer and future solopreneur from Dhaka, Bangladesh, passionate about creating innovative digital experiences."
@@ -139,15 +133,10 @@ export const ContactSection = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Contact Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <div>
           <Card className="bg-muted/60 dark:bg-card">
             <CardHeader className="text-primary text-2xl" />
             <CardContent>
@@ -261,8 +250,8 @@ export const ContactSection = () => {
               </Form>
             </CardContent>
           </Card>
-        </motion.div>
-      </div>
-    </motion.section>
+        </div>
+      </motion.div>
+    </section>
   );
 };

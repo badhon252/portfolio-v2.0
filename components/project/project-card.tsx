@@ -86,7 +86,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           rotateY: isMobile ? 0 : rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="blueprint-reveal h-full will-change-transform"
+        className="blueprint-reveal h-full"
       >
         <Card className="h-full overflow-hidden border-border hover:border-primary/50 transition-colors duration-300 flex flex-col group">
           <div

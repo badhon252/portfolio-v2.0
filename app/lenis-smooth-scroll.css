@@ -19,7 +19,14 @@ html.lenis {
   pointer-events: none;
 }
 
-/* Performance optimizations */
+/* Performance optimizations for animated elements */
 [class*="animate-"] {
   will-change: transform;
+}
+
+/* Optimize scroll wrapper */
+#__next,
+[data-lenis-scroll-container] {
+  /* Minimal optimization */
+  contain: paint;
 }

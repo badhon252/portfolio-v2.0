@@ -10,9 +10,12 @@ interface Props {
 export default function LenisProvider({ children }: Props) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 0.75, // Snappier, more responsive (was 1.1)
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smoother easing
+      lerp: 0.1, // Interpolation control for smoothness
+      smoothWheel: true,
       touchMultiplier: 1.5,
-      easing: (t: number) => 1 - Math.pow(1 - t, 3),
+      infinite: false,
     });
 
     let rafId: number | null = null;
