@@ -53,17 +53,21 @@ export const HeroSection = () => {
             {`A Front-End Engineer crafting high-performance, scalable web applications with React, Next.js, and TypeScript. I'm passionate about building products that make a difference.`}
           </p>
 
-          <div className="space-y-4 md:space-y-0 md:space-x-4 flex items-center justify-center">
+          <div className="flex flex-row gap-4 items-center justify-center">
             <InteractiveHoverButton className="py-2 text-lg">
-             <Link href={"/projects"}>
-             My Works
-             </Link>
+              <Link href={"/projects"}>My Works</Link>
             </InteractiveHoverButton>
-            <ShimmerButton className="shadow-2xl">
-              <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-                Resume
-              </span>
-            </ShimmerButton>
+            <Link
+              href="/Khalid Hossain - Frontend CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ShimmerButton className="shadow-2xl">
+                <span className="whitespace-pre-wrap text-center font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 text-lg">
+                  Resume
+                </span>
+              </ShimmerButton>
+            </Link>
           </div>
         </div>
 

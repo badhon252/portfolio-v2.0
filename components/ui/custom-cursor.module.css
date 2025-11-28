@@ -19,7 +19,7 @@
 .expand {
   background: transparent;
   animation: moveCursor2 0.5s forwards;
-  border: 1px solid yellow;
+  border: 1px solid limegreen;
 }
 
 @keyframes moveCursor1 {
