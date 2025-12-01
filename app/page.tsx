@@ -23,7 +23,7 @@ export const metadata = {
     "Khalid Hossain is a full-stack developer, designer, and entrepreneur.",
   openGraph: {
     type: "website",
-    url: "https://khalid-v2.vercel.app/",
+    url: "https://khalidhossain.me/",
     title: "Portfolio - Khalid Hossain",
     description:
       "Khalid Hossain is a Frontend focused full-stack developer, designer, and entrepreneur.",
@@ -39,7 +39,7 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    site: "https://khalid-v2.vercel.app/",
+    site: "https://khalidhossain.me/",
     title: "Portfolio - Khalid Hossain",
     description:
       "Khalid Hossain is a Frontend focused full-stack developer, designer, and entrepreneur.",
@@ -54,7 +54,6 @@ export default function Home() {
     <>
       <HeroSection />
       {/* <ClientsSection /> */}
-      <TestimonialSection />
       {/* <ServicesSection />  */}
       {/* <FeaturesSection /> */}
       {/* <CurvedLoopClient /> */}
@@ -63,6 +62,7 @@ export default function Home() {
       <Suspense fallback={<div>Loading...</div>}>
         <ProjectContainer />
       </Suspense>
+      <TestimonialSection />
       {/* <AboutPage /> */}
       <FAQSection />
       <ContactSection />
