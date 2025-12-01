@@ -7,7 +7,7 @@ import { FAQSection } from "@/components/layout/sections/faq";
 // import { ServicesSection } from "@/components/layout/sections/services";
 // import { ClientsSection } from "@/components/layout/sections/clients";
 // import { TeamSection } from "@/components/layout/sections/team";
-// import { TestimonialSection } from "@/components/layout/sections/testimonial";
+import { TestimonialSection } from "@/components/layout/sections/testimonial";
 import { ContactSection } from "@/components/layout/sections/contact";
 import { FooterSection } from "@/components/layout/sections/footer";
 import ProjectContainer from "@/components/project/ProjectContainer";
@@ -54,7 +54,7 @@ export default function Home() {
     <>
       <HeroSection />
       {/* <ClientsSection /> */}
-      {/* <TestimonialSection /> */}
+      <TestimonialSection />
       {/* <ServicesSection />  */}
       {/* <FeaturesSection /> */}
       {/* <CurvedLoopClient /> */}

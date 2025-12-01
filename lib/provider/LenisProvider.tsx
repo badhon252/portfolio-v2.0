@@ -12,9 +12,9 @@ export default function LenisProvider({ children }: Props) {
     const lenis = new Lenis({
       duration: 0.75, // Snappier, more responsive (was 1.1)
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smoother easing
-      lerp: 0.05, // Interpolation control for smoothness
+      lerp: 0.08, // Interpolation control for smoothness
       smoothWheel: true,
-      touchMultiplier: 1.5,
+      touchMultiplier: 2,
       infinite: false,
     });
 
