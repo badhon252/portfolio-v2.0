@@ -18,40 +18,64 @@ import { Suspense } from "react";
 import AboutSection from "@/components/layout/sections/about/about-section";
 
 export const metadata = {
-  title: "Khalid Hossain - Frontend Engineer, designer, and Explorer",
+  title: "Home",
   description:
-    "Khalid Hossain is a full-stack developer, designer, and entrepreneur.",
+    "Khalid Hossain Badhon is a frontend-focused full-stack developer, designer, and entrepreneur specializing in building exceptional web experiences with Next.js, React, and TypeScript.",
   openGraph: {
     type: "website",
     url: "https://khalidhossain.me/",
-    title: "Portfolio - Khalid Hossain",
+    title: "Khalid Hossain Badhon - Frontend Engineer, Designer & Explorer",
     description:
-      "Khalid Hossain is a Frontend focused full-stack developer, designer, and entrepreneur.",
+      "Frontend-focused full-stack developer specializing in Next.js, React, and TypeScript. Building modern web applications with exceptional user experiences.",
     images: [
       {
         url: "https://res.cloudinary.com/dw5wizivl/image/upload/v1763698865/1000099526_mxy5wy.jpg",
         width: 1200,
         height: 630,
-        alt: "Shadcn - Landing template",
+        alt: "Khalid Hossain Badhon - Frontend Engineer Portfolio",
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
-    site: "https://khalidhossain.me/",
-    title: "Portfolio - Khalid Hossain",
+    site: "@badhon252",
+    title: "Khalid Hossain Badhon - Frontend Engineer, Designer & Explorer",
     description:
-      "Khalid Hossain is a Frontend focused full-stack developer, designer, and entrepreneur.",
+      "Frontend-focused full-stack developer specializing in Next.js, React, and TypeScript. Building modern web applications with exceptional user experiences.",
     images: [
       "https://res.cloudinary.com/dw5wizivl/image/upload/v1763698865/1000099526_mxy5wy.jpg",
     ],
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Khalid Hossain Badhon",
+  url: "https://khalidhossain.me",
+  image:
+    "https://res.cloudinary.com/dw5wizivl/image/upload/v1763698865/1000099526_mxy5wy.jpg",
+  sameAs: [
+    "https://github.com/badhon252",
+    "https://twitter.com/badhon252",
+    "https://www.linkedin.com/in/badhon252",
+  ],
+  jobTitle: "Frontend Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Freelance",
+  },
+  description:
+    "Frontend-focused full-stack developer specializing in Next.js, React, and TypeScript. Building modern web applications with exceptional user experiences.",
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSection />
       {/* <ClientsSection /> */}
       {/* <ServicesSection />  */}

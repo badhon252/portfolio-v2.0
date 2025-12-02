@@ -255,7 +255,7 @@ export const projectsData: Project[] = [
     shortDescription:
       "The Legal Marketplace for Lawyers — Real Documents, Real Earnings",
     description:
-      "A renowned travel expert agency helping individuals navigate the complexities of international travel with ease, especially in visa and passport assistance. Our goal is to simplify your travel experience by offering clear guidance, personalized support, and efficient processing of travel documents. Whether you're traveling for work, study, or leisure, we're here to ensure your journey starts smoothly.",
+      "Multi-vendor marketplace for lawyers to sell their legal documents and services. Users can browse and purchase legal documents and services from various lawyers. Dual Country (BD & UAE) support tailored books and price listing, Admin dashboard for managing content and inquiries. Community features for lawyers to connect with customers directly.",
     image: "/project/lawbie/lawbie.png",
     technologies: [
       "React",

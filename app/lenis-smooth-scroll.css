@@ -19,14 +19,10 @@ html.lenis {
   pointer-events: none;
 }
 
-/* Performance optimizations for animated elements */
-[class*="animate-"] {
+/* Only apply will-change during active scroll */
+html.lenis-scrolling [class*="animate-"] {
   will-change: transform;
 }
 
-/* Optimize scroll wrapper */
-#__next,
-[data-lenis-scroll-container] {
-  /* Minimal optimization */
-  contain: paint;
-}
+/* Optimize scroll wrapper - Safe optimization */
+/* #__next, [data-lenis-scroll-container] rules removed to prevent z-index issues */

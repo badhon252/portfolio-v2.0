@@ -82,7 +82,7 @@ export const TestimonialSection = () => {
               key={recommendation.id}
               className="md:basis-1/2 lg:basis-1/3"
             >
-              <Card className="bg-muted/50 dark:bg-card h-full flex flex-col justify-between">
+              <Card className="bg-muted/50 dark:bg-card h-full flex flex-col justify-between transform-gpu">
                 <CardHeader>
                   <div className="flex flex-row items-start gap-4">
                     <Avatar className="h-12 w-12">

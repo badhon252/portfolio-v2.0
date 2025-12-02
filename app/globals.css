@@ -16,6 +16,14 @@ html {
   /* Font smoothing */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Performance optimizations */
+  text-rendering: optimizeSpeed;
+
+  /* Prevent font size adjustments on orientation change */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* Note: scrollbar-gutter, will-change, and content-visibility 

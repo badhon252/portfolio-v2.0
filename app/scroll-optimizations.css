@@ -1,31 +1,47 @@
-/* --- Scroll Performance Optimizations (Safe for Lenis) --- */
+/* --- Scroll Performance Optimizations (Safe Mode) --- */
 
 /* Prevent layout shift caused by dynamic scrollbars */
 body {
   scrollbar-gutter: stable;
+  /* REMOVED: transform: translateZ(0) - This breaks position: fixed */
 }
 
-/* Optimize framer-motion components - Only apply to active animations */
+/* Only apply will-change during active scroll */
+html.lenis-scrolling [data-scroll-animate],
+html.lenis-scrolling .framer-motion {
+  will-change: transform, opacity;
+}
+
+/* Optimize animations but avoid creating containing blocks for everything */
 [data-scroll-animate],
 .framer-motion {
-  will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  /* Removed global transform to avoid z-index/stacking issues */
 }
 
 /* Optimize canvas rendering */
 canvas {
   will-change: contents;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Improve lazy image rendering */
 img {
   content-visibility: auto;
+  backface-visibility: hidden;
 }
 
-/* Optimize card components - Only basic containment */
+/* Optimize card components - Use safer containment */
 [class*="card"],
 [class*="Card"] {
+  /* 'paint' containment can clip tooltips/dropdowns if they aren't portals */
+  contain: layout style;
+}
+
+/* Sections */
+section {
   contain: layout style;
 }
 
