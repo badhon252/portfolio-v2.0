@@ -24,18 +24,56 @@ export const metadata: Metadata = {
   description:
     "Frontend-focused full-stack developer specializing in Next.js, React, and TypeScript. Building modern web applications with exceptional user experiences.",
   keywords: [
+    // Core Roles
     "Khalid Hossain",
     "Badhon",
+    "Khalid Hossain Badhon",
     "Frontend Developer",
     "Full Stack Developer",
     "React Developer",
     "Next.js Developer",
-    "TypeScript",
+    "TypeScript Developer",
+    "Software Engineer",
     "Web Developer",
     "UI/UX Designer",
-    "Portfolio",
-    "Software Engineer",
+
+    // Tech Stack
+    "React.js",
+    "Next.js 14",
+    "TypeScript",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Zustand",
+    "TanStack Query",
+    "Shadcn UI",
+    "Node.js",
+    "MongoDB",
+
+    // Skills & Specializations
+    "Server-Side Rendering (SSR)",
+    "Static Site Generation (SSG)",
+    "Performance Optimization",
+    "SEO Optimization",
+    "Accessible Web Design",
+    "Responsive Design",
+    "Modern Web Architecture",
+
+    // Project Domains
+    "SaaS Development",
+    "E-commerce Solutions",
+    "Dashboard Design",
+    "Interactive Web Experiences",
+    "Portfolio Website",
+
+    // Location & Work Type
+    "Barishal",
+    "Bangladesh",
+    "Remote Developer",
+    "Freelance Developer",
   ],
+  alternates: {
+    canonical: "https://khalidhossain.me",
+  },
   authors: [{ name: "Khalid Hossain Badhon", url: "https://khalidhossain.me" }],
   creator: "Khalid Hossain Badhon",
   publisher: "Khalid Hossain Badhon",
@@ -60,7 +98,7 @@ export const metadata: Metadata = {
       "Frontend-focused full-stack developer specializing in Next.js, React, and TypeScript. Building modern web applications with exceptional user experiences.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/khalid-Hossain-Badhon.png",
         width: 1200,
         height: 630,
         alt: "Khalid Hossain - Frontend Engineer Portfolio",
@@ -73,7 +111,7 @@ export const metadata: Metadata = {
     description:
       "Frontend-focused full-stack developer specializing in Next.js, React, and TypeScript. Building modern web applications with exceptional user experiences.",
     creator: "@badhon252",
-    images: ["/og-image.png"],
+    images: ["/khalid-Hossain-Badhon.png"],
   },
   verification: {
     google: "your-google-verification-code", // Replace with actual code

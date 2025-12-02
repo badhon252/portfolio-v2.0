@@ -67,6 +67,21 @@ const jsonLd = {
   },
   description:
     "Frontend-focused full-stack developer specializing in Next.js, React, and TypeScript. Building modern web applications with exceptional user experiences.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Barishal",
+    addressCountry: "BD",
+  },
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Tailwind CSS",
+    "Node.js",
+    "Web Development",
+    "UI/UX Design",
+  ],
 };
 
 export default function Home() {

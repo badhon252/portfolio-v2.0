@@ -83,8 +83,28 @@ export default function Page({ params }: PageProps) {
     githubUrl,
   } = project;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    name: title,
+    description: description,
+    image: image ? `https://khalidhossain.me${image}` : undefined,
+    programmingLanguage: technologies,
+    author: {
+      "@type": "Person",
+      name: "Khalid Hossain Badhon",
+      url: "https://khalidhossain.me",
+    },
+    codeRepository: githubUrl,
+    url: demoUrl,
+  };
+
   return (
     <section className="max-w-3xl mx-auto py-12 px-4 space-y-8 animate-fadeIn">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Header */}
       <header className="mb-4">
         <h1 className="text-primary text-3xl font-bold">{title}</h1>
