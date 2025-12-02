@@ -553,7 +553,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE
 - **LinkedIn**: [linkedin.com/in/khalidhossainbadhon](https://bd.linkedin.com/in/khalidhossainbadhon)
 - **GitHub**: [github.com/badhon252](https://github.com/badhon252)
 - **Twitter**: [@badhon252](https://twitter.com/badhon252)
-- **Email**: [khalid@khalidhossain.me](mailto:khalid@khalidhossain.me)
+- **Email**: [dev.khalidhossain@gmail.com](mailto:dev.khalidhossain@gmail.com)
 
 ---
 

@@ -29,7 +29,7 @@ export const metadata = {
       "Frontend-focused full-stack developer specializing in Next.js, React, and TypeScript. Building modern web applications with exceptional user experiences.",
     images: [
       {
-        url: "https://res.cloudinary.com/dw5wizivl/image/upload/v1763698865/1000099526_mxy5wy.jpg",
+        url: "/Khalid-Hossain-Badhon.png",
         width: 1200,
         height: 630,
         alt: "Khalid Hossain Badhon - Frontend Engineer Portfolio",
@@ -42,9 +42,7 @@ export const metadata = {
     title: "Khalid Hossain Badhon - Frontend Engineer, Designer & Explorer",
     description:
       "Frontend-focused full-stack developer specializing in Next.js, React, and TypeScript. Building modern web applications with exceptional user experiences.",
-    images: [
-      "https://res.cloudinary.com/dw5wizivl/image/upload/v1763698865/1000099526_mxy5wy.jpg",
-    ],
+    images: ["/Khalid-Hossain-Badhon.png"],
   },
 };
 
@@ -58,7 +56,7 @@ const jsonLd = {
   sameAs: [
     "https://github.com/badhon252",
     "https://twitter.com/badhon252",
-    "https://www.linkedin.com/in/badhon252",
+    "https://www.linkedin.com/in/khalidhossainbadhon",
   ],
   jobTitle: "Frontend Engineer",
   worksFor: {
