@@ -248,6 +248,7 @@ portfolio-v2.0/
 
 ---
 
+<!--
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -315,9 +316,9 @@ npm run start
 npm run lint
 ```
 
----
+--- -->
 
-## ⚡ Performance Optimizations
+<!-- ## ⚡ Performance Optimizations
 
 This project implements comprehensive performance optimizations to ensure smooth 60 FPS scrolling and minimal resource usage. See [PERFORMANCE_OPTIMIZATIONS.md](./PERFORMANCE_OPTIMIZATIONS.md) and [SCROLL_FPS_OPTIMIZATIONS.md](./SCROLL_FPS_OPTIMIZATIONS.md) for detailed documentation.
 
@@ -360,9 +361,9 @@ This project implements comprehensive performance optimizations to ensure smooth
 | **CPU Usage**  | Baseline | -50-70%  | **50-70%**  |
 | **Mobile FPS** | 40       | 55       | +35%        |
 
----
+--- -->
 
-## 🔍 SEO & Accessibility
+<!-- ## 🔍 SEO & Accessibility
 
 ### SEO Features
 
@@ -386,7 +387,7 @@ This project implements comprehensive performance optimizations to ensure smooth
 
 ---
 
-## 💻 Development
+<!-- ## 💻 Development
 
 ### Custom Hooks
 
@@ -443,9 +444,9 @@ const isMobile = useMobile();
 - **TypeScript**: Type checking for safer code
 - **Git Hooks**: Pre-commit hooks for linting (optional)
 
----
+--- --> -->
 
-## 🚢 Deployment
+<!-- ## 🚢 Deployment
 
 ### Vercel (Recommended)
 
@@ -490,7 +491,7 @@ NEXT_PUBLIC_GA_ID=your-ga-id (optional)
 
 ---
 
-## 🤝 Contributing
+<!-- ## 🤝 Contributing
 
 Contributions are welcome! Please follow these guidelines:
 
@@ -536,13 +537,13 @@ If you find a bug or have a feature request:
 3. Include steps to reproduce (for bugs)
 4. Add screenshots if applicable
 
----
+--- --> -->
 
-## 📄 License
+<!-- ## 📄 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE) file for details.
 
----
+--- -->
 
 ## 📞 Contact
 
