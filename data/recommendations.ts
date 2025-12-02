@@ -97,18 +97,19 @@ Working with him has been a privilege, and his influence has genuinely helped me
     date: "November 9, 2025",
     content: `I hired him to fix an interactive film pitch website we had started. It had complexities that we could not resolve, and needed some creative, high level coding to make our idea come to life. After a detailed Zoom to explain our needs and responsive communication throughout the process, Ibrahim was able to get it dialed in within a reasonable time frame and kept it within our budget. Highly recommended and we will be working with him again in the future!!`,
   },
-  // {
-  //   id: "6",
-  //   author: {
-  //     name: "James Wilson",
-  //     title: "Director of Engineering at GlobalTech",
-  //     image:
-  //       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop",
-  //     linkedinUrl: "https://linkedin.com",
-  //   },
-  //   relationship: "Khalid's Manager",
-  //   date: "March 15, 2024",
-  //   content:
-  //     "I have had the privilege of managing Khalid for the past two years, and I can confidently say that he is one of the most dedicated and talented engineers I have ever worked with. His technical skills are top-notch, particularly in the React ecosystem, but what truly sets him apart is his problem-solving ability and his unwavering commitment to quality. \n\nWhen we were faced with a critical deadline for our flagship product launch, Khalid stepped up and took ownership of the entire frontend architecture. He not only delivered the project on time but also ensured that the code was scalable, maintainable, and performant. He has a rare ability to balance speed with quality, never cutting corners even under pressure. \n\nBeyond his technical prowess, Khalid is an excellent communicator and a natural leader. He is always willing to mentor junior developers, conducting code reviews with empathy and insight. He fosters a collaborative environment where everyone feels valued and heard. His positive attitude is contagious, and he consistently boosts team morale, even during challenging sprints. \n\nI have seen him navigate complex technical challenges with ease, breaking down large problems into manageable tasks and executing them with precision. He is also highly adaptable, quickly learning new technologies and integrating them into our workflow to improve efficiency. For example, he introduced us to a new state management library that reduced our boilerplate code by 40%. \n\nIn summary, Khalid is a complete package—a brilliant engineer, a thoughtful mentor, and a reliable team player. Any organization would be lucky to have him, and I have no doubt that he will continue to achieve great things in his career.",
-  // },
+  {
+    id: "6",
+    author: {
+      name: "Zihadul Islam",
+      title:
+        "Full Stack Developer (MERN) | Specializing in Building Scalable Web Applications",
+      image:
+        "https://media.licdn.com/dms/image/v2/D5603AQF0cKITh5LtJA/profile-displayphoto-shrink_800_800/B56ZZLa63_GQAc-/0/1745022071071?e=1766016000&v=beta&t=5bF-1fjmAdlePi2Z0Aqx6V1cMJU_LM1a8YaVh5oaoq0",
+      linkedinUrl: "https://www.linkedin.com/in/zihadulislam2/",
+    },
+    relationship: "Worked with Khalid on the same team",
+    date: "December 2, 2025",
+    content:
+      "I worked closely with Khalid Hossain and was consistently impressed by his frontend development skills, especially in React and Next.js. He builds clean, efficient, and scalable interfaces and always pays attention to user experience. Along with that, he has strong interest and practical knowledge in AI tools, which he uses to enhance productivity and solve complex problems. He is proactive, quick to learn, and communicates clearly. I confidently recommend him for any frontend or AI focused role.",
+  },
 ];
