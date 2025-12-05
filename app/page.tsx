@@ -16,6 +16,7 @@ import TechStacks from "@/components/layout/sections/tect-stack";
 // import CurvedLoopClient from "@/components/layout/sections/curved-loop-client";
 import { Suspense } from "react";
 import AboutSection from "@/components/layout/sections/about/about-section";
+import { ProjectScreenshotsSection } from "@/components/layout/sections/ProjectScreenshotsSection";
 
 export const metadata = {
   title: "Home",
@@ -96,6 +97,7 @@ export default function Home() {
       {/* <CurvedLoopClient /> */}
       <AboutSection />
       <TechStacks />
+      {/* <ProjectScreenshotsSection /> */}
       <Suspense fallback={<div>Loading...</div>}>
         <ProjectContainer />
       </Suspense>

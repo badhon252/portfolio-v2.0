@@ -10,8 +10,11 @@ import { DATA, Icons, IconProps } from "./constants";
 
 export function SideDock() {
   return (
-    <section className="hidden lg:block">
-      <div className="flex items-center justify-center fixed bottom-32 rotate-90 -left-10">
+    <section
+      className="hidden lg:block fixed bottom-32 -left-10 z-50"
+      data-lenis-prevent
+    >
+      <div className="flex items-center justify-center rotate-90">
         {Object.entries(DATA.contact.social).map(([name, social]) => (
           <Link
             key={name}
