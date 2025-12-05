@@ -95,7 +95,7 @@ Working with him has been a privilege, and his influence has genuinely helped me
     },
     relationship: "Client",
     date: "November 9, 2025",
-    content: `I hired him to fix an interactive film pitch website we had started. It had complexities that we could not resolve, and needed some creative, high level coding to make our idea come to life. After a detailed Zoom to explain our needs and responsive communication throughout the process, Ibrahim was able to get it dialed in within a reasonable time frame and kept it within our budget. Highly recommended and we will be working with him again in the future!!`,
+    content: `I hired him to fix an interactive film pitch website we had started. It had complexities that we could not resolve, and needed some creative, high level coding to make our idea come to life. After a detailed Zoom to explain our needs and responsive communication throughout the process, Khalid was able to get it dialed in within a reasonable time frame and kept it within our budget. Highly recommended and we will be working with him again in the future!!`,
   },
   {
     id: "6",
