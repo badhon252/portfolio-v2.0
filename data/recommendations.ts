@@ -112,4 +112,30 @@ Working with him has been a privilege, and his influence has genuinely helped me
     content:
       "I worked closely with Khalid Hossain and was consistently impressed by his frontend development skills, especially in React and Next.js. He builds clean, efficient, and scalable interfaces and always pays attention to user experience. Along with that, he has strong interest and practical knowledge in AI tools, which he uses to enhance productivity and solve complex problems. He is proactive, quick to learn, and communicates clearly. I confidently recommend him for any frontend or AI focused role.",
   },
+  {
+    id: "7",
+    author: {
+      name: "Sajjad Hossain",
+      title:
+        "Back End Developer | Specializing in Building Scalable Web Applications",
+      image:
+        "https://media.licdn.com/dms/image/v2/D5603AQFTyfo866-rJA/profile-displayphoto-crop_800_800/B56ZjmNqO0HUAI-/0/1756208998743?e=1766620800&v=beta&t=BEv2RfISAFOFtirU4Wtf8jrzI9K7Ci9tbP0djybdjZ8",
+      linkedinUrl: "https://www.linkedin.com/in/sajjadsajjad/",
+    },
+    relationship: "Worked with Khalid on the same team",
+    date: "December 2, 2025",
+    content: `I had the opportunity to work with Khalid Hossain on many projects, and his expertise as a Frontend Developer has always impressed me. He demonstrates a rare combination of technical depth, design sensitivity, and leadership maturity.
+
+Key strengths I have experienced :
+• Expertise in React, Next.js, TypeScript, and component-driven architecture.
+• High ownership, reliability, and consistent delivery under deadlines.
+• Excellent communication and leadership qualities.
+• Deep understanding of API integration and backend workflows.
+• Strong in code reviews and mentoring juniors.
+• Great at code optimization and handling complex logical parts of a project.
+
+He collaborates smoothly with backend teams, solves problems efficiently, and always stays updated with best practices.
+
+Khalid Hossain is the kind of engineer who elevates the overall quality of any team he joins. Highly recommended.`,
+  },
 ];

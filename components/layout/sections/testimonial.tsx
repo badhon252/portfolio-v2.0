@@ -178,8 +178,8 @@ export const TestimonialSection = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        {/* <CarouselPrevious /> */}
+        {/* <CarouselNext /> */}
 
         <div className="py-2 text-center text-sm text-muted-foreground mt-4 flex justify-center gap-2">
           {Array.from({ length: count }).map((_, index) => (
