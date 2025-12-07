@@ -297,4 +297,38 @@ export const projectsData: Project[] = [
     githubUrl: "",
     demoUrl: "https://lawbie.com/",
   },
+  {
+    id: "9",
+    title: "ChatInsight (beta)",
+    shortDescription:
+      "Chat Analyzer is a privacy-first web application designed to analyze ChatGPT chat history files (`.json` or `.txt`).",
+    description:
+      "Chat Analyzer is a privacy-first web application designed to analyze ChatGPT chat history files (`.json` or `.txt`). The application operates entirely in the browser (Frontend-Only), ensuring that your personal chat data is never stored on an external server. AI analysis is performed by directly connecting to the OpenAI API from your browser.",
+    image: "/project/chatinsight/chatinsight.png",
+    technologies: [
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "react-router-dom",
+      "recharts",
+      "fetch",
+      "Zustand",
+      "Axios",
+      "Tanstack Query",
+      "eslint",
+      "shadcn-ui",
+      "localStorage",
+    ],
+    features: [
+      "Upload & Analysis",
+      "Dashboard",
+      "Topics Explorer",
+      "Topic Detail",
+      "Growth Insights",
+      "Sentiment Analysis",
+    ],
+    categories: ["saas", "ai"],
+    githubUrl: "https://github.com/badhon252/ChatInsight",
+    demoUrl: "https://chatinsight-beta.vercel.app",
+  },
 ];
